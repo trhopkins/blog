@@ -1,0 +1,5 @@
+baseURL: 'http://camphopkins.xyz'
+disablePathToLower: true
+languageCode: en-us
+title: Camp Hopkins
+theme: 'ananke'
