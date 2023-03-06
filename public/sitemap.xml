@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://camphopkins.xyz/</loc>
+    <lastmod>2022-05-29T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/categories/</loc>
+    <lastmod>2022-05-29T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/posts/2022-05-29-fibonacci/</loc>
+    <lastmod>2022-05-29T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/posts/</loc>
+    <lastmod>2022-05-29T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/categories/programming/</loc>
+    <lastmod>2022-05-29T01:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/posts/_site/2022-05-29-fibonacci/</loc>
+    <lastmod>2022-05-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://camphopkins.xyz/tags/</loc>
+  </url>
+</urlset>

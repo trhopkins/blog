@@ -1,8 +1,7 @@
 ---
 categories: programming
 date: "2022-05-29T01:00:00Z"
-title: Fibonacci calculators and time complexity
-todo: add LaTeX Tikz images and align* proofs where possible
+title: Fibonacci Numbers and Time Complexity
 ---
 
 # Simple definitions
@@ -30,6 +29,10 @@ Adding one and two gives us three.
 
 > 0, 1, 1, 2, 3
 
+Adding two and three gives us five.
+
+> 0, 1, 1, 2, 3, 5
+
 Let's follow this sequence and see where it takes us.
 
 > 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
@@ -39,52 +42,25 @@ Let's follow this sequence and see where it takes us.
 The numbers seem to grow quickly! Let's write a program that will calculate the
 nth number in the sequence for us:
 
-{{< highlight python >}}
+```python
 # Python
 def fib(n):
     if n < 2:
         return n
     else:
         return fib(n-1) + fib(n-2)
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
 -- Haskell
 fib :: Integer -> Integer
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n-1) + fib (n-2)
-{{< / highlight >}}
+```
 
 This implementation, while simple, is not very efficient. Let's calculate the
 expected number of operations required to compute `fib(5)` with a call tree:
-
-{% comment %}
-% LaTeX code to generate fibtree.svg
-\documentclass{standalone}
-\usepackage[utf8]{inputenc}
-\usepackage{forest}
-\begin{document}
-\begin{forest}
-[5
-  [4
-    [3
-      [2
-        [\textbf{1}]
-        [0]]
-      [\textbf{1}]]
-    [2
-      [\textbf{1}]
-      [0]]]
-  [3
-    [2
-      [\textbf{1}]
-      [0]]
-    [\textbf{1}]]]
-\end{forest}
-\end{document}
-
-{% endcomment %}
 
 ![fib(5) call tree](/assets/output-1.svg)
 
@@ -104,46 +80,27 @@ Our recursive algorithm doesn't seem to work how we originally defined the
 Fibonacci sequence. What we want is an *iterative* solution which will only
 look at the previous two results:
 
-{{< highlight python >}}
+```python
 # Python
 def fib(n):
     a, b = 0, 1
     for _ in range(n):
         a, b = b, a+b
     return a
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
 -- Haskell
 fib :: Integer -> Integer
 fib n = iter 0 1 n
   where
     iter a _ 0 = a
     iter a b n = iter b (a+b) (n-1)
-{{< / highlight >}}
+```
 
 These definitions are satisfactory, as long as you just want a single value
 calculated in O(n) time. We can determine the time complexity of the above code
 with the following:
-
-{% comment %}
-% LaTeX code to generate lineartime.svg
-\begin{align*}
-  T(0) &= 1\\
-  T(1) &= 1\\
-  T(n) &= T(n-1) + 1\\
-T(n-1) &= T(n-2) + 1\\
-T(n-2) &= T(n-3) + 1\\
-  T(n) &= T(n-1) + 1\\
-       &= T(n-2) + 1 + 1\\
-       &= T(n-3) + 1 + 1 + 1\\
-       &\hspace{3em}\vdots\hspace{8em}\ddots\\
-       &= T(n-k) + k\\
-       &= T(0) + n\\
-       &= n + 1\\
-       &\in \Theta(n)
-\end{align*}
-{% endcomment %}
 
 ![linear time equation](/assets/lineartime.svg)
 
@@ -151,24 +108,24 @@ T(n-2) &= T(n-3) + 1\\
 
 Now consider the following code snippet:
 
-{{< highlight python >}}
+```python
 # Python
 [fib(i) for i in range(10)]
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
 --Haskell
 map fib [0..10]
-{{< / highlight >}}
+```
 
 Performing an O(n) operation over a list of m elements results a time
-complexity of O(n*m). If we were to calculate a list of Fibonacci numbers
+complexity of O(n\*m). If we were to calculate a list of Fibonacci numbers
 ourselves, we could refer back to previously computed values to prevent
 duplicate operations. Making a list of computed values to refer to is known as
 memoization, and is an important part of dynamic programming. Let's see how
 this can be done:
 
-{{< highlight python >}}
+```python
 #Python
 lookup = {0: 0, 1: 1}
 def fib(n):
@@ -178,9 +135,9 @@ def fib(n):
         result = fib(n-1) + fib(n-2)
         lookup[n] = result
         return result
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
 -- Haskell
 fib :: Integer -> Integer
 fib n = map f [0..] !! n
@@ -188,7 +145,7 @@ fib n = map f [0..] !! n
      f 0 = 0
      f 1 = 1
      f n = fib (n-1) + fib (n-2)
-{{< / highlight >}}
+```
 
 This code closely resembles the tree-recursive, naive definition, with an
 important difference: Precomputed values (anything on a right branch) takes
@@ -222,41 +179,6 @@ lacks the mathematical properties we need to go faster than O(n). For an
 example of such a structure, consider this 2x2 matrix which can encode the
 Fibonacci sequence through exponentiation:
 
-{% comment %}
-% LaTeX code to generate matrices.svg
-\begin{align*}
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-\times
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-&=
-\begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
-\\
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-\times
-\begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix}
-&=
-\begin{bmatrix}3 & 2 \\ 2 & 1\end{bmatrix}
-\\
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-\times
-\begin{bmatrix}3 & 2 \\ 2 & 1\end{bmatrix}
-&=
-\begin{bmatrix}5 & 3 \\ 3 & 2\end{bmatrix}
-\\
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-\times
-\begin{bmatrix}5 & 3 \\ 3 & 2\end{bmatrix}
-&=
-\begin{bmatrix}8 & 5 \\ 5 & 3\end{bmatrix}
-\\
-\begin{bmatrix}1 & 1 \\ 1 & 0\end{bmatrix}
-\times
-\begin{bmatrix}8 & 5 \\ 5 & 3\end{bmatrix}
-&=
-\begin{bmatrix}13 & 8 \\ 8 & 5\end{bmatrix} \text{\ldots huh.}
-\end{align*}
-{% endcomment %}
-
 ![matrices are cool](/assets/matrices.svg)
 
 It seems that the bottom-left and top-right values of our matrix contain the most recent
@@ -267,16 +189,6 @@ taking the number in the top-left position of our result, we can compute the
 nth Fibonacci number.
 
 Now I'd like to bring your attention to some useful facts about exponentiation:
-
-{% comment %}
-% LaTeX code to generate exponents.svg
-\begin{align*}
-x^{ab} &= \left( x^{a} \right) ^{b}\\
-x^{a} &= \left( x^{\frac{a}{2}} \right) ^{2}\\
-x^{a} &= x \cdot x^{a-1}\\
-x^{8} &= x^{2^{2^{2}}}
-\end{align*}
-{% endcomment %}
 
 ![exponent rules](/assets/exponents.svg)
 
@@ -291,7 +203,8 @@ O(log n) exponentiation operation!
 
 Let's combine these two facts to get our final Fibonacci algorithm:
 
-{{< highlight python >}}
+```python
+# Python
 import numpy
 
 root = numpy.matrix([[1, 1], [1, 0]])
@@ -305,12 +218,16 @@ def fast_matrix_expt(base, expt):
         return numpy.matmul(fast_matrix_expt(base, expt-1), base)
 
 def fib(n):
-    res = fastMatExp(root, n)
+    res = fast_matrix_expt(root, n)
     return int(res[1, 0])
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
+--Haskell
 import Data.List(transpose)
+
+root :: [[Integer]]
+root = [[1, 1], [1, 0]]
 
 type Matrix a = [[a]]
 
@@ -331,11 +248,9 @@ matrixExpt b e | e == 0    = idMatrix $ length b
                | even e    = matrixSquare $ matrixExpt b $ e `div` 2
                | otherwise = matrixMult b $ matrixExpt b $ e - 1
 
-root = [[1, 1], [1, 0]]
-
 fib :: Integer -> Integer
 fib n = matrixExpt root n !! 0 !! 1
-{{< / highlight >}}
+```
 
 Whew, that was a lot of code! Much of the Python code above is accessing Numpy
 functions, and much of the Haskell code is creating the Matrix data structure
@@ -355,32 +270,10 @@ is that we are generalizing away our old number-generating ruleset for new,
 equivalent ones. Let's see if the slope of the Fibonacci sequence can give us a
 hint:
 
-{% comment %}
-% LaTeX code to generate findingphi.svg
-\begin{align*}
-1 / 1 &= 1.000\\
-2 / 1 &= 2.000\\
-3 / 2 &= 1.500\\
-5 / 3 &= 1.666\\
-8 / 5 &= 1.600\\
-13 / 8 &= 1.625\\
-21 / 13 &= 1.615\\
-34 / 21 &= 1.619\\
-55 / 34 &= 1.618 = \varphi
-\end{align*}
-{% endcomment %}
-
 ![finding phi](/assets/findingphi.svg)
 
 Hey, that's the golden ratio! Side note: the golden ratio the number you get
 when you pick some a and b such that:
-
-{% comment %}
-% LaTeX code to generate ratios.svg
-\begin{align*}
-\frac{a + b}{b} &= \frac{a}{b}
-\end{align*}
-{% endcomment %}
 
 ![ratios](/assets/ratios.svg)
 
@@ -392,13 +285,6 @@ about how this is all done
 [here](https://austinrochford.com/posts/2013-11-01-generating-functions-and-fibonacci-numbers.html).
 Long story short, our chosen starting number is:
 
-{% comment %}
-% LaTeX code to generate base.svg
-\begin{align*}
-\frac{1}{\sqrt{5}}
-\end{align*}
-{% endcomment %}
-
 ![base number](/assets/base.svg)
 
 On many CPU architectures, within a limited range of floating-point values,
@@ -408,22 +294,22 @@ new definition of Fibonacci numbers, to get the following "O(1)" algorithm, so
 long as our resulting number fits within the IEEE 754 specification for
 floating point numbers:
 
-{{< highlight python >}}
+```python
 # Python
 def f(n):
     sq5 = math.sqrt(5)
     phi = (1 + sq5) / 2
     return round(phi**n / sq5)
-{{< / highlight >}}
+```
 
-{{< highlight haskell >}}
+```haskell
 -- Haskell
 fib :: Integer -> Integer
 fib n = round $ phi ** fromIntegral n / sq5
   where
     sq5 = sqrt 5 :: Double
     phi = (1 + sq5) / 2
-{{< / highlight >}}
+```
 
 ## Wrapping up
 

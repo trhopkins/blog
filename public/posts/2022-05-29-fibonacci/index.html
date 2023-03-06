@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Fibonacci calculators and time complexity | Camp Hopkins</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Simple definitions One common programming exercise assigned to students is to create a Fibonacci sequence calculator. The Fibonacci sequence can be defined as follows:
+ start with the numbers 0 and 1 (some versions may start with 1 and 1). to get the next number in the sequence, add the last two numbers in the sequence.  Let&rsquo;s try it! We start with zero and one according to the first rule.">
+    <meta name="generator" content="Hugo 0.93.3" />
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+    
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Fibonacci calculators and time complexity" />
+<meta property="og:description" content="Simple definitions One common programming exercise assigned to students is to create a Fibonacci sequence calculator. The Fibonacci sequence can be defined as follows:
+ start with the numbers 0 and 1 (some versions may start with 1 and 1). to get the next number in the sequence, add the last two numbers in the sequence.  Let&rsquo;s try it! We start with zero and one according to the first rule." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://camphopkins.xyz/posts/2022-05-29-fibonacci/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-29T01:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-29T01:00:00+00:00" />
+
+<meta itemprop="name" content="Fibonacci calculators and time complexity">
+<meta itemprop="description" content="Simple definitions One common programming exercise assigned to students is to create a Fibonacci sequence calculator. The Fibonacci sequence can be defined as follows:
+ start with the numbers 0 and 1 (some versions may start with 1 and 1). to get the next number in the sequence, add the last two numbers in the sequence.  Let&rsquo;s try it! We start with zero and one according to the first rule."><meta itemprop="datePublished" content="2022-05-29T01:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-29T01:00:00+00:00" />
+<meta itemprop="wordCount" content="1763">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fibonacci calculators and time complexity"/>
+<meta name="twitter:description" content="Simple definitions One common programming exercise assigned to students is to create a Fibonacci sequence calculator. The Fibonacci sequence can be defined as follows:
+ start with the numbers 0 and 1 (some versions may start with 1 and 1). to get the next number in the sequence, add the last two numbers in the sequence.  Let&rsquo;s try it! We start with zero and one according to the first rule."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Camp Hopkins
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Fibonacci calculators and time complexity</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-05-29T01:00:00Z">May 29, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="simple-definitions">Simple definitions</h1>
+<p>One common programming exercise assigned to students is to create a Fibonacci
+sequence calculator. The Fibonacci sequence can be defined as follows:</p>
+<ol>
+<li>start with the numbers 0 and 1 (some versions may start with 1 and 1).</li>
+<li>to get the next number in the sequence, add the last two numbers in the
+sequence.</li>
+</ol>
+<p>Let&rsquo;s try it! We start with zero and one according to the first rule.</p>
+<blockquote>
+<p>0, 1</p>
+</blockquote>
+<p>Now let&rsquo;s apply the second rule, adding our zero and one.</p>
+<blockquote>
+<p>0, 1, 1</p>
+</blockquote>
+<p>Now we add the last two numbers to get two.</p>
+<blockquote>
+<p>0, 1, 1, 2</p>
+</blockquote>
+<p>Adding one and two gives us three.</p>
+<blockquote>
+<p>0, 1, 1, 2, 3</p>
+</blockquote>
+<p>Adding two and three gives us five.</p>
+<blockquote>
+<p>0, 1, 1, 2, 3, 5</p>
+</blockquote>
+<p>Let&rsquo;s follow this sequence and see where it takes us.</p>
+<blockquote>
+<p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144&hellip;</p>
+</blockquote>
+<h1 id="lets-program-this">Let&rsquo;s program this!</h1>
+<p>The numbers seem to grow quickly! Let&rsquo;s write a program that will calculate the
+nth number in the sequence for us:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Haskell</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">=</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)</span></span></code></pre></div>
+<p>This implementation, while simple, is not very efficient. Let&rsquo;s calculate the
+expected number of operations required to compute <code>fib(5)</code> with a call tree:</p>
+<p><img src="/assets/output-1.svg" alt="fib(5) call tree"></p>
+<p>Each number on the tree is a call of <code>fib</code>. We can calculate the result by
+counting the number of ones that appears in the tree, in this case five. Notice
+how we call <code>fib(1)</code> five times, <code>fib(2)</code> three times, and <code>fib(3)</code> two times.
+All of these operations are being repeated several times, despite the result
+never differing from its definition. You can probably imagine how many
+redundant operations may be required to calculate <code>fib(10)</code>, which results in
+<em>55</em> calls to <code>fib(1)</code> before terminating. It turns out the time complexity of
+this solution is <em>O(2^n)</em>, which is awfully slow. We will look further into
+this fact later (the <em>true</em> time complexity is much more interesting).</p>
+<h1 id="returning-to-your-roots">Returning to your roots</h1>
+<p>Our recursive algorithm doesn&rsquo;t seem to work how we originally defined the
+Fibonacci sequence. What we want is an <em>iterative</em> solution which will only
+look at the previous two results:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+</span></span><span style="display:flex;"><span>    a, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n):
+</span></span><span style="display:flex;"><span>        a, b <span style="color:#f92672">=</span> b, a<span style="color:#f92672">+</span>b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Haskell</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">=</span> iter <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> n
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span>    iter a <span style="color:#66d9ef">_</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> a
+</span></span><span style="display:flex;"><span>    iter a b n <span style="color:#f92672">=</span> iter b (a<span style="color:#f92672">+</span>b) (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)</span></span></code></pre></div>
+<p>These definitions are satisfactory, as long as you just want a single value
+calculated in O(n) time. We can determine the time complexity of the above code
+with the following:</p>
+<p><img src="/assets/lineartime.svg" alt="linear time equation"></p>
+<h1 id="your-memory-will-serve-you-well">Your memory will serve you well</h1>
+<p>Now consider the following code snippet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python</span>
+</span></span><span style="display:flex;"><span>[fib(i) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">--Haskell</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">map</span> fib [<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span><span style="color:#ae81ff">10</span>]</span></span></code></pre></div>
+<p>Performing an O(n) operation over a list of m elements results a time
+complexity of O(n*m). If we were to calculate a list of Fibonacci numbers
+ourselves, we could refer back to previously computed values to prevent
+duplicate operations. Making a list of computed values to refer to is known as
+memoization, and is an important part of dynamic programming. Let&rsquo;s see how
+this can be done:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Python</span>
+</span></span><span style="display:flex;"><span>lookup <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>: <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>: <span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">in</span> lookup:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> lookup[n]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        lookup[n] <span style="color:#f92672">=</span> result
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Haskell</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">=</span> map f [<span style="color:#ae81ff">0</span><span style="color:#f92672">..</span>] <span style="color:#f92672">!!</span> n
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span>     f <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>     f <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>     f n <span style="color:#f92672">=</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)</span></span></code></pre></div>
+<p>This code closely resembles the tree-recursive, naive definition, with an
+important difference: Precomputed values (anything on a right branch) takes
+O(1) time to look up after it has been added to the memoized table. Thus, we
+can think of our call tree as a straight line down to the bottom, containing n
+nodes for <code>fib(n)</code>, taking O(n) operations times some constant. (For the Haskell
+version of this code, the <code>!!</code> operator over the list <code>[0..]</code> tabulates values
+for us in the background). Repeatedly performing the <code>fib()</code> procedure to
+calculate values in a table is vastly sped up by dynamic programming for this
+reason.</p>
+<p>Assuming looking up values in our list of Fibonacci numbers takes O(1) time, we
+can speed up all future operations each time we compute a new highest value.
+Still, computing a large number like <code>fib(10**10)</code> would take 10^10 * k operations
+to compute. Worse yet, each call to <code>fib()</code> adds to our call stack (as long as
+we are not using a language with tail call optimization) and may cause a stack
+overflow for inputs over a thousand. Is there anything we can do?</p>
+<p>Remember that our iterative and dynamic solutions both take O(n) time to
+compute. This is because our current algorithm must compute all n intermediate
+values to reach its final result. The fundamental <em>shape</em> of our recursive call
+tree hasn&rsquo;t become any shorter, we have just pruned many values from the right
+side. What we need is a shortcut that can utilize the power of mathematics and
+the properties of the Fibonacci sequence to save us some unnecessary
+operations.</p>
+<h1 id="math-detour">Math detour!</h1>
+<p>Maybe the data structure we are using to maintain previous Fibonacci numbers
+lacks the mathematical properties we need to go faster than O(n). For an
+example of such a structure, consider this 2x2 matrix which can encode the
+Fibonacci sequence through exponentiation:</p>
+<p><img src="/assets/matrices.svg" alt="matrices are cool"></p>
+<p>It seems that the bottom-left and top-right values of our matrix contain the most recent
+Fibonacci number, while the other values contain the last Fibonacci numbers
+needed to continue our algorithm, and all we have to do is keep multiplying
+this matrix by our original one! By raising our matrix to the power of n, and
+taking the number in the top-left position of our result, we can compute the
+nth Fibonacci number.</p>
+<p>Now I&rsquo;d like to bring your attention to some useful facts about exponentiation:</p>
+<p><img src="/assets/exponents.svg" alt="exponent rules"></p>
+<p>This means that instead of multiplying x by itself e times, we can square it
+log(e) times for some exponent e, until we get an odd e, at which point we
+use the fact that</p>
+<p>which gives us an even e to continue using our shortcut. This gives us a
+O(log n) exponentiation operation!</p>
+<h2 id="algebra-really-is-useful">Algebra really is useful</h2>
+<p>Let&rsquo;s combine these two facts to get our final Fibonacci algorithm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root <span style="color:#f92672">=</span> numpy<span style="color:#f92672">.</span>matrix([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fast_matrix_expt</span>(base, expt):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> expt <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> numpy<span style="color:#f92672">.</span>identity(base<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> expt <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> numpy<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>matrix_power(fast_matrix_expt(base, expt<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> numpy<span style="color:#f92672">.</span>matmul(fast_matrix_expt(base, expt<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), base)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> fastMatExp(root, n)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> int(res[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>])</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> Data.List(transpose)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#66d9ef">Matrix</span> a <span style="color:#f92672">=</span> [[a]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">idMatrix</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">idMatrix</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">idMatrix</span> n <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">:</span> replicate (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">:</span> map (<span style="color:#ae81ff">0</span><span style="color:#66d9ef">:</span>) (idMatrix (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixMult</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixMult</span> a b <span style="color:#f92672">=</span> [[row `dot` col <span style="color:#f92672">|</span> col <span style="color:#f92672">&lt;-</span> transpose b] <span style="color:#f92672">|</span> row <span style="color:#f92672">&lt;-</span> a]
+</span></span><span style="display:flex;"><span>                   <span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span>                     dot v w <span style="color:#f92672">=</span> sum <span style="color:#f92672">$</span> zipWith (<span style="color:#f92672">*</span>) v w
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixSquare</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixSquare</span> a <span style="color:#f92672">=</span> matrixMult a a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixExpt</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Matrix</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">matrixExpt</span> b e <span style="color:#f92672">|</span> e <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>    <span style="color:#f92672">=</span> idMatrix <span style="color:#f92672">$</span> length b
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">|</span> even e    <span style="color:#f92672">=</span> matrixSquare <span style="color:#f92672">$</span> matrixExpt b <span style="color:#f92672">$</span> e `div` <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> matrixMult b <span style="color:#f92672">$</span> matrixExpt b <span style="color:#f92672">$</span> e <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">=</span> matrixExpt root n <span style="color:#f92672">!!</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">!!</span> <span style="color:#ae81ff">1</span></span></span></code></pre></div>
+<p>Whew, that was a lot of code! Much of the Python code above is accessing Numpy
+functions, and much of the Haskell code is creating the Matrix data structure
+we intend to store our intermediate values in.</p>
+<h2 id="the-golden-ratio">The golden ratio</h2>
+<p>An O(log n) solution using matrices and exponentiation is pretty neat, but have
+we gotten all we can out of the properties of the Fibonacci sequence? How else
+can we optimize our algorithm?</p>
+<p>One thing we can do is attempt to write a generating function that will
+calculate Fibonacci numbers for us. One way of doing this is to see if the
+relationships between the numbers in the sequence have a common pattern in a
+geometric series or linear recursive series. The important thing to understand
+is that we are generalizing away our old number-generating ruleset for new,
+equivalent ones. Let&rsquo;s see if the slope of the Fibonacci sequence can give us a
+hint:</p>
+<p><img src="/assets/findingphi.svg" alt="finding phi"></p>
+<p>Hey, that&rsquo;s the golden ratio! Side note: the golden ratio the number you get
+when you pick some a and b such that:</p>
+<p><img src="/assets/ratios.svg" alt="ratios"></p>
+<p>It looks like all we have to do is find a base number, start multiplying it by
+this ratio (which is irrational by the way), and round to the nearest integer!
+To find that number, we&rsquo;d have to do a bunch of work with generating functions
+to find a characteristic function, its roots, go from there. You can read more
+about how this is all done
+<a href="https://austinrochford.com/posts/2013-11-01-generating-functions-and-fibonacci-numbers.html">here</a>.
+Long story short, our chosen starting number is:</p>
+<p><img src="/assets/base.svg" alt="base number"></p>
+<p>On many CPU architectures, within a limited range of floating-point values,
+simple exponentiation can be done in constant time with some tricky floating
+point unit operations in a coprocessor. We can use this fact, combined with our
+new definition of Fibonacci numbers, to get the following &ldquo;O(1)&rdquo; algorithm, so
+long as our resulting number fits within the IEEE 754 specification for
+floating point numbers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Python</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(n):
+</span></span><span style="display:flex;"><span>    sq5 <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    phi <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> sq5) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> round(phi<span style="color:#f92672">**</span>n <span style="color:#f92672">/</span> sq5)</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Haskell</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">=</span> round <span style="color:#f92672">$</span> phi <span style="color:#f92672">**</span> fromIntegral n <span style="color:#f92672">/</span> sq5
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">where</span>
+</span></span><span style="display:flex;"><span>    sq5 <span style="color:#f92672">=</span> sqrt <span style="color:#ae81ff">5</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Double</span>
+</span></span><span style="display:flex;"><span>    phi <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> sq5) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span></span></span></code></pre></div>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>Generating Fibonacci numbers is a great exercise for getting a better
+understanding of time complexity, recursive functions, and identifying
+mathematical relationships in your code. In the words of the great Chess player
+Emmanuel Lasker:</p>
+<blockquote>
+<p>When you find a good move, look for a better one.</p>
+</blockquote>
+<p>We&rsquo;ve gone from a horrifically slow but very intuitive definition, to several
+clever and unique solutions, some of which show off some fantastic mathematical
+properties of this deceptively simple function. As programmers, when we come
+across elegant solutions to problems, often these problems are indicative of a
+deeper truth embedded into mathematics, which we can use to our advantage. Even
+if the resulting code doesn&rsquo;t come as naturally as the naive solution, reaching
+for a math textbook can often take you on a journey much more fruitful than
+initially anticipated.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://camphopkins.xyz/" >
+    &copy;  Camp Hopkins 2023 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
