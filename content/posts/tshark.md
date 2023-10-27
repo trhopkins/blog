@@ -177,12 +177,67 @@ number or protocol, and then use the `-V` flag and pipe to a pager for easier
 reading.
 
 ```bash
-tshark -r lab1.pcap -Y 'arp' -V | less
+tshark -r lab2.pcap -Y 'arp' -V | less
 ```
 
-You can filter this traffic down further with the `-O` flag, followed by the protocol(s) you would like to read:
+You can filter this traffic down further with the `-O` flag, followed by the protocol(s) you would like to read, separated by commas:
 
 ```bash
-tshark -r lab1.pcap -Y 'frame.number == 2' -O arp | less
+tshark -r lab2.pcap -Y 'frame.number == 7' -O arp
 ```
 
+To identify ARP replies from hosts, we can check the ARP arpcode, or check if it is a unicast message.
+
+```bash
+tshark -r lab2.pcap -Y 'arp.opcode == 2'
+```
+
+## Lab 3: IPv4, IPv6, and ICMP
+
+From here, the lab exercises are more about digging through Wireshark's deep library of statistics and creating a recipe book for effective capture file spelunking. The good news is, Tshark's status as a terminal application grants us access to a host of Unix-y scripting tools that can aid us in discovering things about our capture files, without having to learn the ins and outs of Wireshark configuration. The `-z` flag provides plenty of information on conversations and general protocol information, but requires some extra scripting to get more precise numerical results, as we shall see.
+
+> How many unique IP stations are transmitting in this trace file?
+
+I initially figured `ip.src` field would contain everything I needed, but Wireshark's *Statistics->Endpoints->IPv4* menu disagrees with me. Here's my first attempt:
+
+```bash
+tshark -r lab03_ip_ttl.pcap -T fields -e ip.dst | sort | uniq | wc -l # answer: 34?
+```
+
+Wireshark says 34. We can look at Tshark's statistics page for the Ipv4 conversations and filter the results for another way of answering:
+
+```bash
+tshark -r lab03_ip_ttl.pcap -z conv,ip -q | grep '^[0-9]' | wc -l # answer: 33?
+```
+
+Note that some endpoints were sent to with no response, so no data was received after opening the conversation. Filtering for `ip.src` Gives 30 results, so 4 endpoints must not have sent any data (you can confirm this in the conversation summary with `-z conv,ip`).
+
+> What conversation is busiest, by bytes?
+
+```bash
+tshark -r lab03_ip_ttl.pcap -z conv,ip -q | sort -nrk 10
+```
+
+This isn't my favorite method of displaying the answer, but it gets the job done. I don't currently know how to format Tshark's statistics pages the same way you can with `-E` or the like on a normal packet trace.
+
+> Set a filter for the conversations including address 104.19.162.127. How many packets match that filter?
+
+```bash
+tshark -r lab03_ip_ttl.pcap -Y 'ip.addr == 104.19.162.127' | wc -l
+```
+
+> What side of the conversation was this trace file captured on? Client or server? How can you tell?
+
+The device sending data from port 80 is probably an HTTP server, and the device sending from 50122/50123 is probably a client behind NAT.
+
+> How far away in router hops is the server?
+
+The first SYN packet has a TTL of 64, with a returning TTL of 51, so there are 13 router hops between the client and server.
+
+> Is there any prioritization in traffic coming from the server? What priority marking is used?
+
+```bash
+tshark -r lab03_ip_ttl.pcap -Y 'frame.number == 7' -O ip
+```
+
+In the return messages from the server on port 80, in the IPv4 header, the Differentiated Services Field has Assured Forwarding 11 set. This only comes into play when QoS or traffic policing comes into play, when the network is stressed.
