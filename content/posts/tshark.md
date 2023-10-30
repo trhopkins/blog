@@ -180,13 +180,15 @@ reading.
 tshark -r lab2.pcap -Y 'arp' -V | less
 ```
 
-You can filter this traffic down further with the `-O` flag, followed by the protocol(s) you would like to read, separated by commas:
+You can filter this traffic down further with the `-O` flag, followed by the
+protocol(s) you would like to read, separated by commas:
 
 ```bash
 tshark -r lab2.pcap -Y 'frame.number == 7' -O arp
 ```
 
-To identify ARP replies from hosts, we can check the ARP arpcode, or check if it is a unicast message.
+To identify ARP replies from hosts, we can check the ARP arpcode, or check if
+it is a unicast message.
 
 ```bash
 tshark -r lab2.pcap -Y 'arp.opcode == 2'
@@ -194,23 +196,36 @@ tshark -r lab2.pcap -Y 'arp.opcode == 2'
 
 ## Lab 3: IPv4, IPv6, and ICMP
 
-From here, the lab exercises are more about digging through Wireshark's deep library of statistics and creating a recipe book for effective capture file spelunking. The good news is, Tshark's status as a terminal application grants us access to a host of Unix-y scripting tools that can aid us in discovering things about our capture files, without having to learn the ins and outs of Wireshark configuration. The `-z` flag provides plenty of information on conversations and general protocol information, but requires some extra scripting to get more precise numerical results, as we shall see.
+From here, the lab exercises are more about digging through Wireshark's deep
+library of statistics and creating a recipe book for effective capture file
+spelunking. The good news is, Tshark's status as a terminal application grants
+us access to a host of Unix-y scripting tools that can aid us in discovering
+things about our capture files, without having to learn the ins and outs of
+Wireshark configuration. The `-z` flag provides plenty of information on
+conversations and general protocol information, but requires some extra
+scripting to get more precise numerical results, as we shall see.
 
 > How many unique IP stations are transmitting in this trace file?
 
-I initially figured `ip.src` field would contain everything I needed, but Wireshark's *Statistics->Endpoints->IPv4* menu disagrees with me. Here's my first attempt:
+I initially figured `ip.src` field would contain everything I needed, but
+Wireshark's *Statistics->Endpoints->IPv4* menu disagrees with me. Here's my
+first attempt:
 
 ```bash
 tshark -r lab03_ip_ttl.pcap -T fields -e ip.dst | sort | uniq | wc -l # answer: 34?
 ```
 
-Wireshark says 34. We can look at Tshark's statistics page for the Ipv4 conversations and filter the results for another way of answering:
+Wireshark says 34. We can look at Tshark's statistics page for the Ipv4
+conversations and filter the results for another way of answering:
 
 ```bash
 tshark -r lab03_ip_ttl.pcap -z conv,ip -q | grep '^[0-9]' | wc -l # answer: 33?
 ```
 
-Note that some endpoints were sent to with no response, so no data was received after opening the conversation. Filtering for `ip.src` Gives 30 results, so 4 endpoints must not have sent any data (you can confirm this in the conversation summary with `-z conv,ip`).
+Note that some endpoints were sent to with no response, so no data was received
+after opening the conversation. Filtering for `ip.src` Gives 30 results, so 4
+endpoints must not have sent any data (you can confirm this in the conversation
+summary with `-z conv,ip`).
 
 > What conversation is busiest, by bytes?
 
@@ -218,26 +233,118 @@ Note that some endpoints were sent to with no response, so no data was received 
 tshark -r lab03_ip_ttl.pcap -z conv,ip -q | sort -nrk 10
 ```
 
-This isn't my favorite method of displaying the answer, but it gets the job done. I don't currently know how to format Tshark's statistics pages the same way you can with `-E` or the like on a normal packet trace.
+This isn't my favorite method of displaying the answer, but it gets the job
+done. I don't currently know how to format Tshark's statistics pages the same
+way you can with `-E` or the like on a normal packet trace.
 
-> Set a filter for the conversations including address 104.19.162.127. How many packets match that filter?
+> Set a filter for the conversations including address 104.19.162.127. How many
+> packets match that filter?
 
 ```bash
 tshark -r lab03_ip_ttl.pcap -Y 'ip.addr == 104.19.162.127' | wc -l
 ```
 
-> What side of the conversation was this trace file captured on? Client or server? How can you tell?
+> What side of the conversation was this trace file captured on? Client or
+> server? How can you tell?
 
-The device sending data from port 80 is probably an HTTP server, and the device sending from 50122/50123 is probably a client behind NAT.
+The device sending data from port 80 is probably an HTTP server, and the device
+sending from 50122/50123 is probably a client behind NAT. Plus, according to
+`capinfos`, this file was captured on Mac OS X with the Wi-Fi interface. The
+second packet is a DNS query response which says that the www.pluralsight.com
+domain name matches the IPv4 address 104.19.162.127.
 
 > How far away in router hops is the server?
 
-The first SYN packet has a TTL of 64, with a returning TTL of 51, so there are 13 router hops between the client and server.
+The first SYN packet has a TTL of 64, with a returning TTL of 51, so there are
+13 router hops between the client and server.
 
-> Is there any prioritization in traffic coming from the server? What priority marking is used?
+> Is there any prioritization in traffic coming from the server? What priority
+> marking is used?
 
 ```bash
 tshark -r lab03_ip_ttl.pcap -Y 'frame.number == 7' -O ip
 ```
 
-In the return messages from the server on port 80, in the IPv4 header, the Differentiated Services Field has Assured Forwarding 11 set. This only comes into play when QoS or traffic policing comes into play, when the network is stressed.
+In the return messages from the server on port 80, in the IPv4 header, the
+Differentiated Services Field has Assured Forwarding 11 set. This only comes
+into play when QoS or traffic policing comes into play, when the network is
+stressed.
+
+> What IP flags are set on traffic coming from the server?
+
+```bash
+tshark -r lab03_ip_ttl.pcap -Y 'frame.number == 23' -O ip
+```
+
+The "Don't fragment" bit is set.
+
+> Is the client using incrementing IP Identification numbers? or is it
+> randomizing them?
+
+The client is randomizing them. To figure this out, I ran a display filter for
+packets coming from 192.168.10.108 and chose json as my output format, then
+queried the results with `jq` to get the specific field in ASCII.
+
+```bash
+tshark -r lab3.pcap -Y 'ip.src == 192.168.10.108' -T json | jq '.[]._source.layers.ip."ip.id"'
+```
+
+## Lab 4: IP Fragmentation
+
+This lab demonstrates some facts about fragmenting packets, specified with the
+Differentiated Services Field bits, which can be read with the `jq` strategy.
+It's neat that the fragment offset is byte-addressed, since so many networking
+protocols deal with individual bits within a header, but actual data transfer
+typically deals with much larger payloads.
+
+## Lab 5: ICMP Messages
+
+> How many ICMP packets are in this trace file? 
+
+```bash
+tshark -r lab05.pcap -Y 'icmp' | wc -l
+```
+
+There are two ICMP packets in this trace file.
+
+> What is the Type of ICMP message? 
+
+```bash
+tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.type"'
+```
+
+The type is "3", which corresponds to "Destination unreachable" according to
+Wikipedia.
+
+> What is the code value? 
+
+```bash
+tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.code"'
+```
+
+The code value is also "3", which means "Destination port unreachable".
+
+> What is the source IP of the sending station of these packets? 
+
+```bash
+tshark -r lab5.pcap -Y 'icmp' -T fields -e ip.src
+```
+
+The source IP is 192.168.1.4.
+
+> Why is this ICMP message being sent? Is something broken? If so, what? 
+
+The ICMP message sent from 216.230.139.8 actually contains the packet that
+triggered the error, in this case saying that the endpoint wasn't able to talk
+on that port. Looking back at the previous traffic, it appears that two DNS
+conversations were started, and the host just chose the other endpoint whose
+name was resolved first.
+
+> Will the user experience any application problems from this behavior? 
+
+According to Chris Greer's video explanation in Pluralsight, sometimes web
+browsers will query multiple DNS servers just in case one of the servers fails,
+or the referred address fails. In this case, the DNS server that sent the ICMP
+message caused the failure. The user would be able to access the website just
+fine.
+
