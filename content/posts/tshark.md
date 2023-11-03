@@ -299,7 +299,7 @@ typically deals with much larger payloads.
 
 ## Lab 5: ICMP Messages
 
-> How many ICMP packets are in this trace file? 
+> How many ICMP packets are in this trace file
 
 ```bash
 tshark -r lab05.pcap -Y 'icmp' | wc -l
@@ -307,7 +307,7 @@ tshark -r lab05.pcap -Y 'icmp' | wc -l
 
 There are two ICMP packets in this trace file.
 
-> What is the Type of ICMP message? 
+> What is the Type of ICMP message?
 
 ```bash
 tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.type"'
@@ -316,7 +316,7 @@ tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.type"'
 The type is "3", which corresponds to "Destination unreachable" according to
 Wikipedia.
 
-> What is the code value? 
+> What is the code value?
 
 ```bash
 tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.code"'
@@ -324,7 +324,7 @@ tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.code"'
 
 The code value is also "3", which means "Destination port unreachable".
 
-> What is the source IP of the sending station of these packets? 
+> What is the source IP of the sending station of these packets?
 
 ```bash
 tshark -r lab5.pcap -Y 'icmp' -T fields -e ip.src
@@ -332,7 +332,7 @@ tshark -r lab5.pcap -Y 'icmp' -T fields -e ip.src
 
 The source IP is 192.168.1.4.
 
-> Why is this ICMP message being sent? Is something broken? If so, what? 
+> Why is this ICMP message being sent? Is something broken? If so, what?
 
 The ICMP message sent from 216.230.139.8 actually contains the packet that
 triggered the error, in this case saying that the endpoint wasn't able to talk
@@ -340,7 +340,7 @@ on that port. Looking back at the previous traffic, it appears that two DNS
 conversations were started, and the host just chose the other endpoint whose
 name was resolved first.
 
-> Will the user experience any application problems from this behavior? 
+> Will the user experience any application problems from this behavior?
 
 According to Chris Greer's video explanation in Pluralsight, sometimes web
 browsers will query multiple DNS servers just in case one of the servers fails,
@@ -348,3 +348,40 @@ or the referred address fails. In this case, the DNS server that sent the ICMP
 message caused the failure. The user would be able to access the website just
 fine.
 
+## Lab 6: IPv6 Headers
+
+The purpose of this lab is to show some of the distinguishing features of IPv6 and ICMPv6 at a packet level. There's not a ton of important Tshark-related stuff that you can't just figure out with our previous packet inspection tricks.
+
+## Lab 7: Analyzing UDP
+
+> What Applications are using UDP in this trace file?
+
+```bash
+tshark -r lab07.pcap -O udp | less
+```
+
+Since each packet has a UDP field in the results, and searching for TCP reveals nothing, then all the protocols in this capture file use UDP. That includes DNS, and SNMP.
+
+> What UDP port number does the DNS server use?
+
+DNS uses UDP port 53. As far as I know no TCP protocols use that port number, even if they are technically distinct from a protocol perspective.
+
+> Why do we see the ICMP message in packet 5?
+
+The router or default gateway has blocked SNMP traffic, so it replies with ICMP type 3 code 3, meaning the port is blocked.
+
+> What kind of service is SNMP? What does it do?
+
+SNMP stands for Simple Network Management Protocol. It allows hosts and servers to manage configuration details of other hosts, query for information on configurations, and send passwords in plaintext over the wire. The latest version, SNMPv3, uses encryption, but could still be vulnerable to brute force and dictionary attacks for community strings, which is what SNMP calls a master password.
+
+> Extra credit - What community string is the SNMP query using?
+
+```bash
+tshark -r lab07.pcap -O snmp | grep community
+```
+
+The SNMPv2 protocol used in this packet trace sends the community string unencrypted. The string is "ARIFA" which could be a hint that the router is using a default security configuration.
+
+## Lab 8: Analyzing DHCP
+
+asdf
