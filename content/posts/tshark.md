@@ -22,22 +22,22 @@ my typical workflow when completing the labs looked something like this:
 
 1. Open the capture file in Wireshark with `wireshark 'Lab 2_ARP
    Protocol.pcapng' &` or similar.
-2. View the lab comments with control+alt+shift+c or *Statistics->Capture File
+1. View the lab comments with control+alt+shift+c or *Statistics->Capture File
    Properties* (alt+s+enter in the menu).
-3. In a separate terminal, rename the file for convenience to `lab2.pcap` or
+1. In a separate terminal, rename the file for convenience to `lab2.pcap` or
    similar. Note that Tshark doesn't tab-complete `.pcapng` files in bash, only
    `.pcap` files. I am running Tshark version 4.0.8 in nix-shell, but this may
    not be the case in other versions. We will come back to versioning later.
-4. `capinfos lab2.pcap` to read the lab comments and any other capture file
+1. `capinfos lab2.pcap` to read the lab comments and any other capture file
    metadata. Note you can read the same data with `head lab2.pcap` if your
    package manager doesn't include `capinfos` with Wireshark, and you don't
    mind some occasionally poor formatting. I find it neat that the metadata is
    almost directly prepended to the actual file contents.
-5. Open [tshark.dev](https://tshark.dev/) in Firefox and search for the
+1. Open [tshark.dev](https://tshark.dev/) in Firefox and search for the
    relevant documentation if it exists.
-6. For technical minutiae of Tshark like command line arguments and formatting
+1. For technical minutiae of Tshark like command line arguments and formatting
    tricks try, `man tshark` and search for relevant keywords and flags.
-7. If the question cannot be trivially solved with the current tools at hand,
+1. If the question cannot be trivially solved with the current tools at hand,
    look it up in Firefox. The solution tends to come up in [Wireshark's
    documentation](https://www.wireshark.org/docs/wsug_html_chunked/)
    also.
@@ -227,7 +227,7 @@ scripting to get more precise numerical results, as we shall see.
    endpoints must not have sent any data (you can confirm this in the conversation
    summary with `-z conv,ip`).
 
-2. What conversation is busiest, by bytes?
+1. What conversation is busiest, by bytes?
 
    ```bash
    tshark -r lab03_ip_ttl.pcap -z conv,ip -q | sort -nrk 10
@@ -237,13 +237,13 @@ scripting to get more precise numerical results, as we shall see.
    done. I don't currently know how to format Tshark's statistics pages the same
    way you can with `-E` or the like on a normal packet trace.
 
-3. Set a filter for the conversations including address 104.19.162.127. How many packets match that filter?
+1. Set a filter for the conversations including address 104.19.162.127. How many packets match that filter?
 
    ```bash
    tshark -r lab03_ip_ttl.pcap -Y 'ip.addr == 104.19.162.127' | wc -l
    ```
 
-4. What side of the conversation was this trace file captured on? Client or server? How can you tell?
+1. What side of the conversation was this trace file captured on? Client or server? How can you tell?
 
    The device sending data from port 80 is probably an HTTP server, and the device
    sending from 50122/50123 is probably a client behind NAT. Plus, according to
@@ -251,12 +251,12 @@ scripting to get more precise numerical results, as we shall see.
    second packet is a DNS query response which says that the [www.pluralsight.com](www.pluralsight.com)
    domain name matches the IPv4 address 104.19.162.127.
 
-5. How far away in router hops is the server?
+1. How far away in router hops is the server?
 
    The first SYN packet has a TTL of 64, with a returning TTL of 51, so there are
    13 router hops between the client and server.
 
-6. Is there any prioritization in traffic coming from the server? What priority marking is used?
+1. Is there any prioritization in traffic coming from the server? What priority marking is used?
 
    ```bash
    tshark -r lab03_ip_ttl.pcap -Y 'frame.number == 7' -O ip
@@ -267,7 +267,7 @@ scripting to get more precise numerical results, as we shall see.
    into play when QoS or traffic policing comes into play, when the network is
    stressed.
 
-7. What IP flags are set on traffic coming from the server?
+1. What IP flags are set on traffic coming from the server?
 
    ```bash
    tshark -r lab03_ip_ttl.pcap -Y 'frame.number == 23' -O ip
@@ -275,7 +275,7 @@ scripting to get more precise numerical results, as we shall see.
 
    The "Don't fragment" bit is set.
 
-8. Is the client using incrementing IP Identification numbers? or is it randomizing them?
+1. Is the client using incrementing IP Identification numbers? or is it randomizing them?
 
    The client is randomizing them. To figure this out, I ran a display filter for
    packets coming from 192.168.10.108 and chose json as my output format, then
@@ -303,7 +303,7 @@ typically deals with much larger payloads.
 
    There are two ICMP packets in this trace file.
 
-2. What is the Type of ICMP message?
+1. What is the Type of ICMP message?
 
    ```bash
    tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.type"'
@@ -312,7 +312,7 @@ typically deals with much larger payloads.
    The type is "3", which corresponds to "Destination unreachable" according to
    Wikipedia.
 
-3. What is the code value?
+1. What is the code value?
 
    ```bash
    tshark -r lab5.pcap -Y 'icmp' -T json | jq '.[]._source.layers.icmp."icmp.code"'
@@ -320,7 +320,7 @@ typically deals with much larger payloads.
 
    The code value is also "3", which means "Destination port unreachable".
 
-4. What is the source IP of the sending station of these packets?
+1. What is the source IP of the sending station of these packets?
 
    ```bash
    tshark -r lab5.pcap -Y 'icmp' -T fields -e ip.src
@@ -328,7 +328,7 @@ typically deals with much larger payloads.
 
    The source IP is 192.168.1.4.
 
-5. Why is this ICMP message being sent? Is something broken? If so, what?
+1. Why is this ICMP message being sent? Is something broken? If so, what?
 
    The ICMP message sent from 216.230.139.8 actually contains the packet that
    triggered the error, in this case saying that the endpoint wasn't able to talk
@@ -336,7 +336,7 @@ typically deals with much larger payloads.
    conversations were started, and the host just chose the other endpoint whose
    name was resolved first.
 
-6. Will the user experience any application problems from this behavior?
+1. Will the user experience any application problems from this behavior?
 
    According to Chris Greer's video explanation in Pluralsight, sometimes web
    browsers will query multiple DNS servers just in case one of the servers fails,
@@ -358,19 +358,19 @@ The purpose of this lab is to show some of the distinguishing features of IPv6 a
 
    Since each packet has a UDP field in the results, and searching for TCP reveals nothing, then all the protocols in this capture file use UDP. That includes DNS, and SNMP.
 
-2. What UDP port number does the DNS server use?
+1. What UDP port number does the DNS server use?
 
    DNS uses UDP port 53. As far as I know no TCP protocols use that port number, even if they are technically distinct from a protocol perspective.
 
-3. Why do we see the ICMP message in packet 5?
+1. Why do we see the ICMP message in packet 5?
 
    The router or default gateway has blocked SNMP traffic, so it replies with ICMP type 3 code 3, meaning the port is blocked.
 
-4. What kind of service is SNMP? What does it do?
+1. What kind of service is SNMP? What does it do?
 
    SNMP stands for Simple Network Management Protocol. It allows hosts and servers to manage configuration details of other hosts, query for information on configurations, and send passwords in plaintext over the wire. The latest version, SNMPv3, uses encryption, but could still be vulnerable to brute force and dictionary attacks for community strings, which is what SNMP calls a master password.
 
-5. Extra credit - What community string is the SNMP query using?
+1. Extra credit - What community string is the SNMP query using?
 
    ```bash
    tshark -r lab07.pcap -O snmp | grep community
@@ -384,45 +384,45 @@ The purpose of this lab is to show some of the distinguishing features of IPv6 a
 
    The host on the NIC named NetAlly_a1:17:9f is broadcasting to request the default gateway, DNS endpoint, and an IP address from the router. Note according to Chris Greer: This endpoint is assuming whatever routers are in this broadcast domain can either act as a DHCP server or do DHCP routing if it is not in this broadcast domain.
 
-2. Is this a broadcast packet?
+1. Is this a broadcast packet?
 
    Since this is going to MAC address ff:ff:ff:ff:ff:ff, yes this is a broadcast packet for the discover request. This is being sent from IPv4 "0.0.0.0" to 255.255.255.255, so it is attempting to broadcast there as well, with an unknown broadcast or address in its subnet.
 
-3. What is the function of the ARPs in packets 2-4?
+1. What is the function of the ARPs in packets 2-4?
 
    Frame 2: The Belkin router (presumably) is looking for the physical address of any device with the IP of 192.128.10.120. If such a device exists, it would respond, but nothing happened, so the router knows that address is free to assign to the device that sent the DHCP Discover request.
 
-4. What is the server host name of the DHCP server?
+1. What is the server host name of the DHCP server?
 
    The server host name, from the frame 5 DHCP Offer response, is "ecosystem.home.cisco.com".
 
-5. The server goes above and beyond. What options are offered to the client that did not appear in the discover packet?
+1. The server goes above and beyond. What options are offered to the client that did not appear in the discover packet?
 
    The server offers Options 53 (Offer), 54 (DHCP Server Identifier), 51 (IP Address Lease Time), 58 (Renewal Time), 59 (Rebinding Time), 1 (Subnet Mast), 28 (Broadcast Address), 6 (Domain Name Server), 3 (Router), and 255 (End).
 
-6. In the request packet, why is there no relay agent?
+1. In the request packet, why is there no relay agent?
 
    Since the router is typically the one communicating to a relay agent, and the request packet is coming from the host, there is no need to use one.
 
-7. In the request packet, how does the client identify which server it wants an address from?
+1. In the request packet, how does the client identify which server it wants an address from?
 
    Multiple DHCP servers could be present in the network, so the Server Identifier option in the Request packet specifies a DHCP server that the host would like to be tracked from.
 
-8. In the DHCP ACK - is this packet a broadcast?
+1. In the DHCP ACK - is this packet a broadcast?
 
    The DHCP server's ACK packet is directed only to the host it is acknowledging as having a newly assigned address.
 
-9. What is the lease time of the accepted address?
+1. What is the lease time of the accepted address?
 
    In the ACK packet's Option 51, IP Address Lease Time, we can see that it has 86400 seconds, or one day of lease time.
 
-10. After how long can the client renew the lease?
+1. After how long can the client renew the lease?
 
     The Renewal Time Value (option 58) is 12 hours.
 
-11. What is the function of packets 8 and 9?
+1. What is the function of packets 8 and 9?
 
-    In frame 8, the host sends an ARP probe asking if any other hosts have the address it was just given by the DHCP server. Half a second later, in the following packet, it announces its newly allocated address.
+   In frame 8, the host sends an ARP probe asking if any other hosts have the address it was just given by the DHCP server. Half a second later, in the following packet, it announces its newly allocated address.
 
 ## Lab 9: DHCP Decline
 
@@ -454,7 +454,7 @@ This query will show the time and general packet info, sorted by the longest DNS
 
    This shows that port 21 is used for FTP communication.
 
-2. What initial Login does it use?
+1. What initial Login does it use?
 
    ```bash
    tshark -r lab11.pcap -Y ftp -O ftp | less
@@ -462,15 +462,15 @@ This query will show the time and general packet info, sorted by the longest DNS
 
    Searching for "Login" shows the server response in Frame 10, so we have to work back through the conversation to Frame 8 to see the "USER" field written as "anonymous".
 
-3. What password does it use?
+1. What password does it use?
 
    the PASS field is given in Frame 9: "<chrome@example.com>". This may be a default value from the user's web browser to attempt to access publicly-available materials. Note to self: see what user/password is used for GNU's FTP server for downloading GNU source code.
 
-4. Is the initial login successful? What server response code does the server use?
+1. Is the initial login successful? What server response code does the server use?
 
    Frame 10 suggests the login or password is incorrect, and gives a response code of 530.
 
-5. Does this connection stay open for long?
+1. Does this connection stay open for long?
 
    One major upside Wireshark has over Tshark is its ease of conversation tracking with the right-click menu. In Tshark, you first have to identify the TCP stream index, and then do the following:
 
@@ -480,62 +480,92 @@ This query will show the time and general packet info, sorted by the longest DNS
 
    You can also get a similar effect with a display filter: `tcp.stream == 0`, or try `ftp` and look through the packets manually with `-O ftp`. Looking at the Frame delta information, this automated conversation amusingly made only one attempt at connecting and then sent the "QUIT" request.
 
-6. Look at the next connection to the same port. What packet does this connection start on?
+1. Look at the next connection to the same port. What packet does this connection start on?
 
    `tcp.stream == 1` Reveals the next connection on Frame 18, right after the last connection closed. It's unfortunate that the client couldn't stay on the same TCP connection to reduce traffic overhead, but at least it is easier to distinguish the FTP conversations by ephemeral port or TCP stream.
 
-7. What username and password does the client use to connect?
+1. What username and password does the client use to connect?
 
    The "chris" user is tried, with an empty password after typing PASS.
 
-8. Is this connection successful? Which response code does the server use?
+1. Is this connection successful? Which response code does the server use?
 
    The server response code is 230, "Logged on".
 
-9. What directory does the client have access to?
+1. What directory does the client have access to?
 
    The client starts in the root directory, written as "/", of the fileshare.
 
-10. What file is requested from the server?
+1. What file is requested from the server?
 
     the file "/Pluralsight Logo.PNG" is requested with RETR for "retrieve", but only after attempting to change directory with CWD.
 
-11. What is the size of this file in bytes?
+1. What is the size of this file in bytes?
 
     In Frame 38, the "SIZE" command is sent, and the server responds with "5817", which is the number of bytes in the file, converted to
 
-12. Does the client want to transfer this file in passive or active mode?
+1. Does the client want to transfer this file in passive or active mode?
 
-    In Frame 44 we can see the PASV command is sent from the client, which means passive mode.
+   In Frame 44 we can see the PASV command is sent from the client, which means passive mode.
 
-13. What port does the server tell the client to use for file transfer?   Transfering the File:
+1. What port does the server tell the client to use for file transfer?   Transfering the File:
 
-    In Frame 45, the server's response gives response code 227 to enter passive mode, and then the octets (192, 168, 10, 196, 227, 188). The first four are the IPv4 address of the server to connect to for the data, and the last two give the port number: Multiply 227 by 256, then add 188 to get port 58300. It's convoluted bits of trivia like this that remind me why I am not a network engineer.
+   In Frame 45, the server's response gives response code 227 to enter passive mode, and then the octets (192, 168, 10, 196, 227, 188). The first four are the IPv4 address of the server to connect to for the data, and the last two give the port number: Multiply 227 by 256, then add 188 to get port 58300. It's convoluted bits of trivia like this that remind me why I am not a network engineer.
 
-14. What port does the client connect to?
+1. What port does the client connect to?
 
-    The client connects to port 58300 in a new TCP session.
+   The client connects to port 58300 in a new TCP session.
 
-15. How many packets does the server need to actually transfer the file?
+1. How many packets does the server need to actually transfer the file?
 
-    ```bash
-    tshark -r lab11.pcap -Y 'ftp-data' | wc -l
-    ```
+   ```bash
+   tshark -r lab11.pcap -Y 'ftp-data' | wc -l
+   ```
 
-    There are 4 total packets transferred to the client. I was surprised at the existence of the "ftp-data" filter, which I only would have discovered with Wireshark.
+   There are 4 total packets transferred to the client. I was surprised at the existence of the "ftp-data" filter, which I only would have discovered with Wireshark.
 
-16. Without further direction, can you work out how to extract this file from Wireshark?  What kind of file is transfered? Can you reassemble it?
+1. Without further direction, can you work out how to extract this file from Wireshark?  What kind of file is transfered? Can you reassemble it?
 
-    Wireshark wins again in terms of simplicity. For this problem, I started by identifying the TCP stream number and writing this query:
+   Wireshark wins again in terms of simplicity. For this problem, I started by identifying the TCP stream number and writing this query:
 
-    ```bash
-    tshark -r lab11.pcap -q -z follow,tcp,raw,2 > ftp.png
-    ```
+   ```bash
+   tshark -r lab11.pcap -q -z follow,tcp,raw,2 > ftp.png
+   ```
 
-    This only gives us the UTF-8 representation of the stream's hex contents, with one line per packet of information. A tool like `ngrep` would be much better suited for this purpose, but I'm going to do my best to reconstruct the file with Tshark anyway.
+   This only gives us the UTF-8 representation of the stream's hex contents, with one line per packet of information. A tool like `ngrep` would be much better suited for this purpose, but I'm going to do my best to reconstruct the file with Tshark anyway.
 
-    We can clean up the file with a quick bash script to remove unnecessary lines and characters that aren't hex digits:
+   We can clean up the file with a quick bash script to remove unnecessary lines and characters that aren't hex digits:
 
-    ```bash
-    tshark -r lab11_analyzing_ftp.pcap -z follow,tcp,raw,2 -q | awk -e '/\t/ { printf "%s", $1 }' | xxd -r -p - > ftp.png
-    ```
+   ```bash
+   tshark -r lab11_analyzing_ftp.pcap -z follow,tcp,raw,2 -q | awk -e '/\t/ { printf "%s", $1 }' | xxd -r -p - > ftp.png
+   ```
+
+## Lab 12: HTTP over TLS
+
+1. What port is the client connecting to on the server?
+1. What is the initial network roundtrip time for this connection?
+
+### Client Hello
+
+1. In the client hello, what TLS version is being used initially? Why do you think this is the case?
+1. In the handshake protocol, what TLS version is being initially used?
+1. How many cipher suites are being offered to the server?
+1. Does the client know the name of the server it is communicating to?
+1. In the ALPN info, which HTTP versions are supported by the client?
+1. Which versions of TLS is the client advertising?
+
+### Server Hello
+
+1. What initial TLS version is the server using?
+1. Which cipher suite did it select to use?
+1. What TLS version does it select?
+1. Do we see which HTTP version the server selected? Why?
+
+Encrypted data.
+
+1. Any idea which packet from the client is likely the HTTP (1.1 or 2.0) request?
+1. How long does it take the server to begin responding?
+1. After this point, are there any other issues in the TCP stream?
+
+If a user was complaining that this application was slow, what would you say is the cause? Client, network, or server? Why?
+Resume the video for the answers.
