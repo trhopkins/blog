@@ -385,24 +385,35 @@ Pluralsight course, "Analyzing and Decrypting TLS with Wireshark", which spends
 nearly an hour explaining the TLS handshake before showing the solution in two
 five-minute videos, with another fifteen to decrypt and display the traffic.
 I'll keep it to the point, and you'll keep this trick in your back pocket for
-an obscure CTF question about packet inspection, I don't know.
-
-To decrypt TLS traffic from your host computer, you will need a web browser as
-well as your shell. This is because Firefox or Chrome can export your key logs
-as you access different websites, so you can debug the Certificate Signing
-Requests and such. Start by closing any open web browsers (that includes
-background processes, *Firefox*) and setting the `SSLKEYLOGFILE` environment
-variable to the path where you'd like to capture your keys, then open Firefox
-or Chrome from your terminal and navigate to a website. Note that if you close
-the terminal or open the browser from another app, your terminal won't
-propagate the variable and your browser won't save your keys.
+an obscure CTF question about packet inspection someday, I don't know. Here are
+[some instructions I stole from
+Tshark.dev](https://tshark.dev/export/export_tls/) on exporting TLS traffic:
 
 ```bash
-export SSLKEYLOGFILE=~/dl/keys.log # && firefox gnu.org
+export SSLKEYLOGFILE=~/tmp/keys.log
+export URL='gnu.org'
+tshark -Q -a duration:5 -w /tmp/firefox.pcap &
+firefox --headless --private $URL & FFPID=$!
+sleep 5 && kill -9 $FFPID
+tshark -Q --export-objects http,/tmp/obj -r /tmp/firefox.pcap -o tls.keylog_file:$SSLKEYLOGFILE
 ```
 
-Now we can start capturing traffic with Tshark or Tcpdump and open Firefox to a
-random website for a few seconds of sample input. We need to make sure the TLS
-handshake is captured so we can see the initial key exchange and verify our
-hashes and such.
+`-Q` silences tshark output, `-a` specifies an auto-stop point,
+`--export-objects` writes http objects to the given directory, and `-o` sets a
+"preference value". I was surprised to find from `--export-objects help` that
+you can only export HTTP, TFTP, DICOM, SMB, and IFM blobs. Exporting FTP
+traffic in the previous lab would have been nice, but I guess my solution is a
+bit more generic, albeit janky.
+
+## Conclusion
+
+I had a great time going through the exercises in Chris Greer's Pluralsight
+course, but I had an even better time discovering the flexibility of Tshark and
+the creativity that people bring to using the tool. Often people reach for
+Tshark when they need to do something non-trivial that Wireshark isn't capable
+of, despite how intimidating CLI tools can be compared to their GUI
+counterparts. Having familiarized myself with both tools, I feel like I could
+go either way when doing exploratory packet analysis. I hope the examples and
+anecdotes of this post were informative or helpful in your journey to mastering
+network traffic analysis.
 
