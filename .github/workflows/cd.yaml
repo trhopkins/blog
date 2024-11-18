@@ -26,10 +26,10 @@ jobs:
 
       - name: Add TF Deployment Creds
         run: |
-          # echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          # echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "TF_VAR_aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "TF_VAR_aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+          echo 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' >> $GITHUB_ENV
+          echo 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' >> $GITHUB_ENV
+          echo 'access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' >> tf/terraform.auto.tfvars
+          echo 'secret_key=${{ secrets.AWS_SECRET_ACCES_KEY }}' >> tf/terraform.auto.tfvars
 
       - name: Terraform Initialize
         run: terraform -chdir=tf init
