@@ -30,11 +30,11 @@ jobs:
           echo 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> $GITHUB_ENV'
 
       - name: Terraform Initialize
-        run: terraform init
+        run: terraform init -chdir=tf
 
       - name: Terraform Plan
-        run: terraform plan -out out.tfplan
+        run: terraform plan -chdir=tf
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve out.tfplan
+        run: terraform apply -auto-approve -chdir=tf
 
