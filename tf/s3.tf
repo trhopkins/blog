@@ -1,10 +1,17 @@
-resource "aws_s3_bucket" "bucket" {
-	bucket = "camphopkins-xyz-1234567890"
+resource "aws_s3_bucket" "blog" {
+	bucket = "camphopkins-xyz"
+}
+
+resource "aws_s3_bucket_versioning" "blog" {
+  bucket = aws_s3_bucket.blog.id
+  versioning_configuration {
+    status = "Enabled"
+  }
 }
 
 resource "aws_s3_object" "blog_contents" {
   for_each = fileset("../html/", "*")
-  bucket = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.blog.id
   key = each.value
   source = "../html/${each.value}"
   etag = filemd5("../html/${each.value}")
@@ -12,7 +19,7 @@ resource "aws_s3_object" "blog_contents" {
 }
 
 resource "aws_s3_bucket_website_configuration" "blog_config" {
-  bucket = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.blog.id
   index_document {
     suffix = "index.html"
   }
@@ -23,7 +30,7 @@ resource "aws_s3_bucket_website_configuration" "blog_config" {
 
 resource "aws_s3_bucket_public_access_block" "blog_config" {
   for_each = fileset("../html/", "*")
-  bucket = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.blog.id
   block_public_acls = false
   block_public_policy = false
   ignore_public_acls = false
@@ -31,7 +38,7 @@ resource "aws_s3_bucket_public_access_block" "blog_config" {
 }
 
 resource "aws_s3_bucket_policy" "blog_config" {
-  bucket = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.blog.id
   policy = data.aws_iam_policy_document.allow_public_s3_access.json
 }
 
@@ -42,9 +49,19 @@ data "aws_iam_policy_document" "allow_public_s3_access" {
       identifiers = ["*"]
     }
     actions = [
-      "s3:GetObject"
+      "s3:GetObject",
     ]
-    resources = [ format("%s/*", aws_s3_bucket.bucket.arn) ]
+    resources = [ format("%s/*", aws_s3_bucket.blog.arn) ]
+  }
+  statement {
+    principals {
+      type = "AWS"
+      identifiers = ["arn:aws:iam::531782379741:user/tf"]
+    }
+    actions = [
+      "s3:PutObject",
+    ]
+    resources = [ format("%s/*", aws_s3_bucket.blog.arn) ]
   }
 }
 
