@@ -13,7 +13,7 @@ resource "aws_s3_bucket_website_configuration" "blog" {
 }
 
 resource "aws_s3_bucket_public_access_block" "blog" {
-  for_each = fileset("html/", "*")
+  for_each = fileset("../html/", "*")
   bucket = aws_s3_bucket.blog.id
   block_public_acls = false
   block_public_policy = false
@@ -22,11 +22,11 @@ resource "aws_s3_bucket_public_access_block" "blog" {
 }
 
 resource "aws_s3_object" "blog" {
-  for_each = fileset("html/", "*")
+  for_each = fileset("../html/", "*")
   bucket = aws_s3_bucket.blog.id
   key = each.value
-  source = "html/${each.value}"
-  etag = filemd5("html/${each.value}")
+  source = "../html/${each.value}"
+  etag = filemd5("../html/${each.value}")
   content_type = "text/html"
 }
 
