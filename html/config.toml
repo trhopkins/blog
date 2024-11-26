@@ -1,0 +1,10 @@
+baseURL = 'http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/'
+languageCode = 'en-us'
+title = 'Camp Hopkins'
+theme = 'paper'
+defaultcontentlanguage = 'en'
+paginate = 20
+[params]
+  author = 'Reid Hopkins'
+  description = "Camp Hopkins"
+  info = "Welcome to Camp Hopkins!"
