@@ -9,53 +9,17 @@ resource "aws_s3_bucket_versioning" "blog" {
   }
 }
 
-resource "aws_s3_object" "blog_contents_js" {
-  for_each = fileset("../html/public/", "**.js")
+resource "aws_s3_object" "blog_contents_html" {
+  for_each = fileset("../html/public/", "*.html")
   bucket = aws_s3_bucket.blog.id
   key = each.value
   source = "../html/public/${each.value}"
   etag = filemd5("../html/public/${each.value}")
-  content_type = "application/javascript"
-}
-
-resource "aws_s3_object" "blog_contents_ico" {
-  for_each = fileset("../html/public/", "**.ico")
-  bucket = aws_s3_bucket.blog.id
-  key = each.value
-  source = "../html/public/${each.value}"
-  etag = filemd5("../html/public/${each.value}")
-  content_type = "image/x-icon"
-}
-
-resource "aws_s3_object" "blog_contents_png" {
-  for_each = fileset("../html/public/", "**.png")
-  bucket = aws_s3_bucket.blog.id
-  key = each.value
-  source = "../html/public/${each.value}"
-  etag = filemd5("../html/public/${each.value}")
-  content_type = "image/png"
-}
-
-resource "aws_s3_object" "blog_contents_svg" {
-  for_each = fileset("../html/public/", "**.svg")
-  bucket = aws_s3_bucket.blog.id
-  key = each.value
-  source = "../html/public/${each.value}"
-  etag = filemd5("../html/public/${each.value}")
-  content_type = "image/svg+xml"
-}
-
-resource "aws_s3_object" "blog_contents_xml" {
-  for_each = fileset("../html/public/", "**.xml")
-  bucket = aws_s3_bucket.blog.id
-  key = each.value
-  source = "../html/public/${each.value}"
-  etag = filemd5("../html/public/${each.value}")
-  content_type = "text/xml"
+  content_type = "text/html"
 }
 
 resource "aws_s3_object" "blog_contents_css" {
-  for_each = fileset("../html/public/", "**.css")
+  for_each = fileset("../html/public/", "*.css")
   bucket = aws_s3_bucket.blog.id
   key = each.value
   source = "../html/public/${each.value}"
@@ -63,12 +27,75 @@ resource "aws_s3_object" "blog_contents_css" {
   content_type = "text/css"
 }
 
-resource "aws_s3_object" "blog_contents_html" {
-  for_each = fileset("../html/public/", "**.html")
+resource "aws_s3_object" "blog_contents_js" {
+  for_each = fileset("../html/public/", "*.js")
   bucket = aws_s3_bucket.blog.id
   key = each.value
   source = "../html/public/${each.value}"
   etag = filemd5("../html/public/${each.value}")
+  content_type = "application/js"
+}
+
+resource "aws_s3_object" "blog_contents_xml" {
+  for_each = fileset("../html/public/", "*.xml")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "text/xml"
+}
+
+resource "aws_s3_object" "blog_contents_svg" {
+  for_each = fileset("../html/public/", "*.svg")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "image/svg+xml"
+}
+
+resource "aws_s3_object" "blog_contents_png" {
+  for_each = fileset("../html/public/", "*.png")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "image/png"
+}
+
+resource "aws_s3_object" "blog_contents_jpeg" {
+  for_each = fileset("../html/public/", "*.jpeg")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "image/jpeg"
+}
+
+resource "aws_s3_object" "blog_contents_gif" {
+  for_each = fileset("../html/public/", "*.gif")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "image/gif"
+}
+
+resource "aws_s3_object" "blog_contents_webp" {
+  for_each = fileset("../html/public/", "*.webp")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/${each.value}"
+  etag = filemd5("../html/public/${each.value}")
+  content_type = "image/webp"
+}
+
+resource "aws_s3_object" "blog_contents_posts" {
+  for_each = fileset("../html/public/posts/", "*.html")
+  bucket = aws_s3_bucket.blog.id
+  key = each.value
+  source = "../html/public/posts/${each.value}"
+  etag = filemd5("../html/public/posts/${each.value}")
   content_type = "text/html"
 }
 
