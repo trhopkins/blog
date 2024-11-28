@@ -98,3 +98,13 @@ data "aws_iam_policy_document" "allow_public_s3_access" {
   }
 }
 
+resource "aws_s3_bucket_cors_configuration" "example" {
+  bucket = aws_s3_bucket.blog.bucket
+  cors_rule {
+    allowed_headers = ["Authorization", "Content-Length"]
+    allowed_methods = ["GET", "POST"]
+    allowed_origins = ["https://${var.domain_name}"]
+    max_age_seconds = 3000
+  }
+}
+
