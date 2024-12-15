@@ -1,9 +1,9 @@
-baseURL = 'http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/'
+baseURL = 'https://camphopkins.com'
 languageCode = 'en-us'
 title = 'Camp Hopkins'
 theme = 'paper'
 defaultcontentlanguage = 'en'
-paginate = 20
+pagerSize = 20
 [params]
   author = 'Reid Hopkins'
   description = "Camp Hopkins"

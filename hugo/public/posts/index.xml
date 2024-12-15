@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Camp Hopkins</title>
-    <link>http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Camp Hopkins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Nov 2024 17:21:29 -0500</lastBuildDate>
-    <atom:link href="http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 11 24 Hello World</title>
-      <link>http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/posts/2024-11-24-hello-world/</link>
+      <link>http://localhost:1313/posts/2024-11-24-hello-world/</link>
       <pubDate>Sun, 24 Nov 2024 17:21:29 -0500</pubDate>
-      <guid>http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/posts/2024-11-24-hello-world/</guid>
+      <guid>http://localhost:1313/posts/2024-11-24-hello-world/</guid>
       <description>&lt;h1 id=&#34;h1&#34;&gt;H1&lt;/h1&gt;&#xA;&lt;p&gt;Body text.&lt;/p&gt;&#xA;&lt;h1 id=&#34;h2&#34;&gt;H2&lt;/h1&gt;&#xA;&lt;p&gt;More body text.&lt;/p&gt;</description>
     </item>
   </channel>
