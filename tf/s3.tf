@@ -10,7 +10,7 @@ resource "aws_s3_bucket_versioning" "blog" {
 }
 
 variable "upload_dir" {
-  default = "../html/public"
+  default = "../hugo/public"
 }
 
 variable "mime_types" {
@@ -62,7 +62,7 @@ resource "aws_s3_bucket_cors_configuration" "blog_config" {
 }
 
 resource "aws_s3_bucket_public_access_block" "blog_config" {
-  for_each                = fileset("../html/public/", "*")
+  for_each                = fileset("../hugo/public/", "*")
   bucket                  = aws_s3_bucket.blog.id
   block_public_acls       = false
   block_public_policy     = false

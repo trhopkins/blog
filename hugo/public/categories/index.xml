@@ -4,7 +4,8 @@
     <title>Categories on Camp Hopkins</title>
     <link>http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/categories/</link>
     <description>Recent content in Categories on Camp Hopkins</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://camphopkins-xyz.s3-website-us-east-1.amazonaws.com/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
