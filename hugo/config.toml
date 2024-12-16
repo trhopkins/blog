@@ -1,4 +1,6 @@
-baseURL = 'https://camphopkins.com'
+# baseURL = 'https://camphopkins-com.s3-website-us-east-1.amazonaws.com/'
+baseURL = 'https://camphopkins.com/'
+minify = true
 languageCode = 'en-us'
 title = 'Camp Hopkins'
 theme = 'paper'
