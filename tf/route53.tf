@@ -18,11 +18,27 @@ resource "aws_route53_record" "root_a_record" {
 #   name = aws_acm_certificate.site_certificate.domain_name
 # }
 
-resource "aws_route53_record" "site_cert_dns" {
+resource "aws_route53_record" "cert_validation_record" {
+  for_each = {
+    for dvo in aws_acm_certificate.site_certificate.domain_validation_options : dvo.domain_name => {
+      name = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type = dvo.resource_record_type
+    }
+  }
   allow_overwrite = true
-  name            = tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_name
-  records         = [tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_value]
-  type            = tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_type
-  zone_id         = var.route53_zone_id
-  ttl             = 60
+  name = each.value.name
+  records = [each.value.record]
+  ttl = 60
+  type = each.value.type
+  zone_id = aws_route53_zone.primary.id
 }
+
+# resource "aws_route53_record" "site_cert_dns" {
+#   allow_overwrite = true
+#   name            = tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_name
+#   records         = [tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_value]
+#   type            = tolist(aws_acm_certificate.site_certificate.domain_validation_options)[0].resource_record_type
+#   zone_id         = var.route53_zone_id
+#   ttl             = 60
+# }

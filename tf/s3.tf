@@ -15,30 +15,32 @@ variable "upload_dir" {
 
 variable "mime_types" {
   default = {
+    css  = "text/css"
     htm  = "text/html"
     html = "text/html"
-    css  = "text/css"
     xml  = "text/xml"
-    svg  = "image/svg+xml"
-    png  = "image/png"
+    gif  = "image/gif"
     ico  = "image/x-icon"
     jpeg = "image/jpeg"
+    png  = "image/png"
     svg  = "image/svg"
+    svg  = "image/svg+xml"
     ttf  = "font/ttf"
     js   = "application/javascript"
-    map  = "application/javascript"
     json = "application/json"
+    map  = "application/javascript"
+    pdf  = "application/pdf"
   }
 }
 
 resource "aws_s3_object" "blog_contents" {
-  for_each = fileset(var.upload_dir, "**/*.*")
-  bucket   = aws_s3_bucket.blog.id
-  key      = replace(each.value, var.upload_dir, "")
-  source   = "${var.upload_dir}/${each.value}"
-  # acl = "public-read"
-  etag         = filemd5("${var.upload_dir}/${each.value}")
-  content_type = lookup(var.mime_types, split(".", each.value)[length(split(".", each.value)) - 1])
+  bucket              = aws_s3_bucket.blog.id
+  for_each            = fileset(var.upload_dir, "**/*.*")
+  key                 = replace(each.value, var.upload_dir, "")
+  source              = "${var.upload_dir}/${each.value}"
+  etag                = filemd5("${var.upload_dir}/${each.value}")
+  content_type        = lookup(var.mime_types, split(".", each.value)[length(split(".", each.value)) - 1])
+  content_disposition = "inline"
 }
 
 resource "aws_s3_bucket_website_configuration" "blog_config" {
@@ -52,22 +54,39 @@ resource "aws_s3_bucket_website_configuration" "blog_config" {
 }
 
 resource "aws_s3_bucket_cors_configuration" "blog_config" {
-  bucket = aws_s3_bucket.blog.bucket
+  # bucket = aws_s3_bucket.blog.bucket
+  bucket = aws_s3_bucket.blog.id
   cors_rule {
-    allowed_headers = ["Authorization", "Content-Length"]
-    allowed_methods = ["GET", "POST"]
-    allowed_origins = ["https://${var.domain_name}"]
+    # allowed_headers = ["Authorization", "Content-Length"]
+    # allowed_methods = ["GET", "POST"]
+    # allowed_origins = ["https://${var.domain_name}"]
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["*"]
     max_age_seconds = 3000
+  }
+}
+
+resource "aws_s3_bucket_acl" "s3_acl" {
+  bucket     = aws_s3_bucket.blog.id
+  acl        = "private"
+  depends_on = [aws_s3_bucket_ownership_controls.s3_acl_ownership]
+}
+
+resource "aws_s3_bucket_ownership_controls" "s3_acl_ownership" {
+  bucket = aws_s3_bucket.blog.id
+  rule {
+    object_ownership = "ObjectWriter"
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "blog_config" {
   for_each                = fileset("../hugo/public/", "*")
   bucket                  = aws_s3_bucket.blog.id
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_policy" "blog_config" {
@@ -77,7 +96,7 @@ resource "aws_s3_bucket_policy" "blog_config" {
 
 data "aws_iam_policy_document" "allow_public_s3_access" {
   statement {
-    actions = ["s3:GetObject"]
+    actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.blog.arn}/*"]
     principals {
       type        = "AWS"
@@ -85,19 +104,19 @@ data "aws_iam_policy_document" "allow_public_s3_access" {
     }
   }
   statement {
-    actions = ["s3:PutObject"]
+    actions   = ["s3:PutObject"]
     resources = ["${aws_s3_bucket.blog.arn}/*"]
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = ["arn:aws:iam::531782379741:user/tf"]
     }
   }
   statement {
     # actions = ["s3:ListObject"]
-    actions = ["s3:ListBucket"]
+    actions   = ["s3:ListBucket"]
     resources = ["${aws_s3_bucket.blog.arn}"]
     principals {
-      type        = "AWS"
+      type = "AWS"
       # identifiers = ["arn:aws:iam::531782379741:user/tf"]
       identifiers = ["${aws_cloudfront_origin_access_identity.oai.iam_arn}"]
     }
