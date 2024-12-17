@@ -1,0 +1,13 @@
+# baseURL = 'https://camphopkins-com.s3-website-us-east-1.amazonaws.com/'
+baseURL = 'https://camphopkins.com/'
+publishDir = '../dist'
+minify = true
+languageCode = 'en-us'
+title = 'Camp Hopkins'
+theme = 'paper'
+defaultcontentlanguage = 'en'
+pagerSize = 20
+[params]
+  author = 'Reid Hopkins'
+  description = "Camp Hopkins"
+  info = "Welcome to Camp Hopkins!"
