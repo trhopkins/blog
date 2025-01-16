@@ -47,6 +47,13 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     max_ttl = 60 * 60 * 24 * 365
     # Compress static file to reduce bandwidth
     compress = true
+    dynamic "function_association" {
+      for_each = [aws_cloudfront_function.default_root_object_in_subdirectory]
+      content {
+        event_type = "viewer-request"
+        function_arn = aws_cloudfront_function.default_root_object_in_subdirectory.arn
+      }
+    }
     forwarded_values {
 
       query_string = false
@@ -116,4 +123,11 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
 #   signing_behavior = "always"
 #   signing_protocol = "sigv4"
 # }
+
+resource "aws_cloudfront_function" "default_root_object_in_subdirectory" {
+  name = "default_root_object_index_for_subdirectory"
+  runtime = "cloudfront-js-2.0"
+  comment = "redirect paths to index.html for subdirectories below root"
+  code = file("${path.module}/function.js")
+}
 
