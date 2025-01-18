@@ -28,22 +28,23 @@ jobs:
 
       - name: Add TF Deployment Creds
         run: |
-          echo 'AWS_ACCESS_KEY_ID="${{ secrets.ACCESS_KEY }}"' >> $GITHUB_ENV
-          echo 'AWS_SECRET_ACCESS_KEY="${{ secrets.SECRET_KEY }}"' >> $GITHUB_ENV
-          echo 'access_key="${{ secrets.ACCESS_KEY }}"' >> tf/terraform.tfvars
-          echo 'secret_key="${{ secrets.SECRET_KEY }}"' >> tf/terraform.tfvars
-          echo 'aws_region="${{ secrets.AWS_REGION }}"' >> tf/terraform.tfvars
-          echo 'domain_name="${{ secrets.DOMAIN_NAME }}"' >> tf/terraform.tfvars
+          # echo 'AWS_ACCESS_KEY_ID="${{ secrets.ACCESS_KEY }}"' >> $GITHUB_ENV
+          # echo 'AWS_SECRET_ACCESS_KEY="${{ secrets.SECRET_KEY }}"' >> $GITHUB_ENV
+          # echo 'access_key="${{ secrets.ACCESS_KEY }}"' >> tf/terraform.tfvars
+          # echo 'secret_key="${{ secrets.SECRET_KEY }}"' >> tf/terraform.tfvars
+          # echo 'aws_region="${{ secrets.AWS_REGION }}"' >> tf/terraform.tfvars
+          # echo 'domain_name="${{ secrets.DOMAIN_NAME }}"' >> tf/terraform.tfvars
+          echo 'TF_VAR_aws_access_key="${{ secrets.ACCESS_KEY }}"' >> $GITHUB_ENV
+          echo 'TF_VAR_aws_secret_key="${{ secrets.SECRET_KEY }}"' >> $GITHUB_ENV
+          echo 'TF_VAR_aws_region="${{ secrets.AWS_REGION }}"' >> $GITHUB_ENV
+          echo 'TF_VAR_domain_name="${{ secrets.DOMAIN_NAME }}"' >> $GITHUB_ENV
 
       - name: Terraform Initialize
         run: terraform -chdir=tf init
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
 
       - name: Terraform Plan
-        run: terraform -chdir=tf plan -var-file=terraform.tfvars
+        run: terraform -chdir=tf plan # -var-file=terraform.tfvars
 
       - name: Terraform Apply
-        run: terraform -chdir=tf apply -auto-approve -var-file=terraform.tfvars
+        run: terraform -chdir=tf apply -auto-approve # -var-file=terraform.tfvars
 
