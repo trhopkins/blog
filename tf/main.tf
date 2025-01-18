@@ -25,12 +25,13 @@ module "camphopkins-static-site" {
   path_to_bundle   = "../dist"
 }
 
-module "terraform-be" {
-  source               = "./modules/backend"
-  region               = "us-east-1"
-  aws_profile          = "terraform"
-  bucket_name          = "camphopkins-tf-state"
-  project_name         = "camphopkins"
-  enable_state_locking = true
-  dynamodb_name        = "camphopkins-tf-lock"
-}
+# module "terraform-be" {
+#   source               = "./modules/backend"
+#   region               = "us-east-1"
+#   aws_profile          = "terraform"
+#   bucket_name          = "camphopkins-tf-state"
+#   project_name         = "camphopkins"
+#   enable_state_locking = true
+#   dynamodb_name        = "camphopkins-tf-lock"
+# }
+
