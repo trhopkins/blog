@@ -36,11 +36,11 @@ jobs:
           echo 'domain_name=${{ secrets.DOMAIN_NAME }}' >> tf/terraform.tfvars
 
       - name: Terraform Initialize
-        run: terraform -chdir=tf init -var-file=terraform.tfvars
+        run: terraform -chdir=tf init -var-file=tf/terraform.tfvars
 
       - name: Terraform Plan
-        run: terraform -chdir=tf plan -var-file=terraform.tfvars
+        run: terraform -chdir=tf plan -var-file=tf/terraform.tfvars
 
       - name: Terraform Apply
-        run: terraform -chdir=tf apply -auto-approve -var-file=terraform.tfvars
+        run: terraform -chdir=tf apply -auto-approve -var-file=tf/terraform.tfvars
 
