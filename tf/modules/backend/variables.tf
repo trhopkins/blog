@@ -33,11 +33,6 @@ variable "access_key" {
   sensitive = true
 }
 
-# variable "aws_profile" {
-#   description = "AWS Account to use"
-#   type        = string
-# }
-
 variable "project_name" {
   description = "The project name that will be applied to tags"
   type        = string

@@ -11,8 +11,6 @@ terraform {
     dynamodb_table = "camp-hopkins-tf-lock"
     encrypt        = true
     key            = "terraform.tfstate"
-    # access_key     = var.access_key
-    # secret_key     = var.secret_key
     region         = "us-east-1"
   }
 }

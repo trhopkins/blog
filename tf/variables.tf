@@ -18,18 +18,3 @@ variable "aws_region" {
   description = "AWS Region to deploy in"
 }
 
-# variable "bucket_name" {
-#   type        = string
-#   description = "Bucket name without the www. prefix, normally domain_name"
-# }
-
-# variable "acm_certificate_arn" {
-#   type        = string
-#   description = "ARN of the ACM certificate for domain_name"
-# }
-
-# variable "route53_zone_id" {
-#   type        = string
-#   description = "ID of the Route 53 zone"
-# }
-
