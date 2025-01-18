@@ -21,10 +21,22 @@ variable "dynamodb_name" {
   default     = null
 }
 
-variable "aws_profile" {
-  description = "AWS Account to use"
+variable "secret_key" {
+  description = "AWS Account secret key"
   type        = string
+  sensitive = true
 }
+
+variable "access_key" {
+  description = "AWS Account access key"
+  type        = string
+  sensitive = true
+}
+
+# variable "aws_profile" {
+#   description = "AWS Account to use"
+#   type        = string
+# }
 
 variable "project_name" {
   description = "The project name that will be applied to tags"

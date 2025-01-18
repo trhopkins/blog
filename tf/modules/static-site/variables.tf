@@ -1,9 +1,3 @@
-variable "aws_profile" {
-  description = "AWS Account to use"
-  type        = string
-  default     = "default"
-}
-
 variable "region" {
   description = "AWS Region"
   type        = string
@@ -95,3 +89,4 @@ variable "mime_types" {
     pdf  = "application/pdf"
   }
 }
+

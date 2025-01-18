@@ -2,7 +2,6 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      # version = "~> 4.67.0"
       version = "~> 5.0"
     }
   }
@@ -10,10 +9,10 @@ terraform {
 
 provider "aws" {
   region  = var.region
-  profile = var.aws_profile
+  # profile = var.aws_profile
   # region = var.aws_region
-  # access_key = var.access_key
-  # secret_key = var.secret_key
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
 
 resource "aws_s3_bucket" "tf_state_bucket" {

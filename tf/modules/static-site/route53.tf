@@ -1,11 +1,4 @@
 /**
-* Setting up a Custom Domain and SSL/TLS is optional
-* This is denoted by the "count" variable,
-* i.e. these resources are only created if the root_domain_name is
-* provided to the module
-**/
-
-/**
 *  Looks up the hosted zone based on the zone name
 *  Only retrives the data if the custom_domain variable is provided
 **/
