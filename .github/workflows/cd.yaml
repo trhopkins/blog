@@ -36,8 +36,8 @@ jobs:
       - name: Terraform Initialize
         run: terraform -chdir=tf init
         env:
-          TF_VAR_secret_key: ${{ secrets.ACCESS_KEY }}
-          TF_VAR_access_key: ${{ secrets.SECRET_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
 
       - name: Terraform Plan
         run: terraform -chdir=tf plan -var-file=terraform.tfvars
