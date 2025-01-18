@@ -11,7 +11,6 @@ terraform {
     dynamodb_table = "camp-hopkins-tf-lock"
     encrypt        = true
     key            = "terraform.tfstate"
-    region         = "us-east-1"
   }
 }
 
@@ -31,7 +30,6 @@ module "terraform-be" {
   dynamodb_name        = "camp-hopkins-tf-lock"
   enable_state_locking = true
   project_name         = "camp-hopkins"
-  region               = "us-east-1"
   source               = "./modules/backend"
 }
 
