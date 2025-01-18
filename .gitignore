@@ -1,5 +1,5 @@
 .env
-*auto.tfvars
+*.tfvars
 *.tfplan
 *.terraform
 *.tfstate
