@@ -1,4 +1,4 @@
-variable "aws_region" {
+variable "region" {
   description = "AWS Region"
   type        = string
   default     = "us-east-1"
@@ -21,14 +21,8 @@ variable "dynamodb_name" {
   default     = null
 }
 
-variable "secret_key" {
+variable "aws_profile" {
   description = "AWS Account secret key"
-  type        = string
-  sensitive = true
-}
-
-variable "access_key" {
-  description = "AWS Account access key"
   type        = string
   sensitive = true
 }

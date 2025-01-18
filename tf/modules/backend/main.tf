@@ -8,9 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  region = var.region
 }
 
 resource "aws_s3_bucket" "tf_state_bucket" {

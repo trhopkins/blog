@@ -28,15 +28,15 @@ jobs:
 
       - name: Add TF Deployment Creds
         run: |
+          mkdir -p ~/.aws
+          file=~/.aws/credentials
+          echo '[terraform]' > $file
+          echo 'aws_access_key_id = ${{ secrets.ACCESS_KEY }}' >> $file
+          echo 'aws_secret_access_key = ${{ secrets.SECRET_KEY }}' >> $file
+
           echo 'AWS_ACCESS_KEY_ID=${{ secrets.ACCESS_KEY }}' >> $GITHUB_ENV
           echo 'AWS_SECRET_ACCESS_KEY=${{ secrets.SECRET_KEY }}' >> $GITHUB_ENV
           echo 'AWS_REGION=${{ secrets.AWS_REGION }}' >> $GITHUB_ENV
-          # echo 'access_key="${{ secrets.ACCESS_KEY }}"' >> tf/terraform.tfvars
-          # echo 'secret_key="${{ secrets.SECRET_KEY }}"' >> tf/terraform.tfvars
-          # echo 'aws_region="${{ secrets.AWS_REGION }}"' >> tf/terraform.tfvars
-          # echo 'domain_name="${{ secrets.DOMAIN_NAME }}"' >> tf/terraform.tfvars
-          # echo 'TF_VAR_aws_access_key=${{ secrets.ACCESS_KEY }}' >> $GITHUB_ENV
-          # echo 'TF_VAR_aws_secret_key=${{ secrets.SECRET_KEY }}' >> $GITHUB_ENV
           echo 'TF_VAR_access_key=${{ secrets.ACCESS_KEY }}' >> $GITHUB_ENV
           echo 'TF_VAR_secret_key=${{ secrets.SECRET_KEY }}' >> $GITHUB_ENV
           echo 'TF_VAR_aws_region=${{ secrets.AWS_REGION }}' >> $GITHUB_ENV
