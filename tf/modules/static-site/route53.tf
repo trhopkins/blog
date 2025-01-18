@@ -4,7 +4,6 @@
 **/
 data "aws_route53_zone" "hosted_zone" {
   count = var.root_domain_name != "" ? 1 : 0
-
   name         = var.root_domain_name
   private_zone = false
 }
