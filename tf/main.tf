@@ -6,14 +6,14 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket = "camphopkins-tf-state"
-  #   key     = "terraform.tfstate"
-  #   region  = "us-east-1"
-  #   dynamodb_table = "camphopkins-tf-lock"
-  #   encrypt = true
-  #   profile = "terraform"
-  # }
+  backend "s3" {
+    bucket = "camphopkins-tf-state"
+    key     = "terraform.tfstate"
+    region  = "us-east-1"
+    # dynamodb_table = "camphopkins-tf-lock"
+    encrypt = true
+    profile = "terraform"
+  }
 }
 
 module "camphopkins-static-site" {
