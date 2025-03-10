@@ -2,6 +2,7 @@
 title: "Platelet Donation Tips"
 date: 2025-01-27T12:00:00-05:00
 draft: false
+summary: What do you bring to a platelet donation appointment? What happens there? Read on to find out.
 ---
 
 # My tips for donating platelets

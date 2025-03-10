@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <div class="italic text-gray-500 mb-4">
+    {{ .Content }}
+  </div>
+  {{ $posts := where site.RegularPages "Section" "eq" "posts" }}
+  <div class="space-y-6">
+    {{ range $posts }}
+      <a class="block bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow" href="{{ .RelPermalink }}">
+        <div class="flex justify-between items-center">
+          <h2 class="text-2xl font-bold text-gray-800">{{ .LinkTitle }}</h2>
+          <div class="flex justify-between items-center text-sm text-gray-500">
+            {{ range .Params.tags }}
+              <span class="px-1">#{{ . }}</span>
+            {{ end }}
+          </div>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 italic">{{ time.Format ":date_long" .Date }}</p>
+          {{ .Summary }}
+        </div>
+      </a>
+    {{ end }}
+  </div>
+{{ end }}

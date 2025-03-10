@@ -1,54 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 
-{{ $.Scratch.Delete "bg_color" }}<!---->
-{{ $.Scratch.Delete "social_list" }}<!---->
-{{ $.Scratch.Delete "avatar_url" }}<!---->
-
-<!-- bg_color -->
-{{ $color_map := dict "linen" "#faf8f1" "wheat" "#f8f5d7" "gray" "#fbfbfb"
-"light" "#fff" }}<!---->
-{{ $.Scratch.Set "bg_color" (index $color_map (site.Params.color | default
-(print "linen"))) }}<!---->
-{{ $bg_color := $.Scratch.Get "bg_color" }}<!---->
-
-<!-- social_list -->
-{{ $social_params := slice "twitter" "github" "instagram" "linkedin" "mastodon"
-"threads" "rss" }}<!---->
-{{ range $social_params }}<!---->
-{{ if isset site.Params . }}<!---->
-{{ $.Scratch.Add "social_list" (slice .) }}<!---->
-{{ end }}<!---->
-{{ end }}<!---->
-
-<!-- avatar_url -->
-{{ if site.Params.avatar }}<!---->
-{{ if in site.Params.avatar "http" }}<!---->
-{{ $.Scratch.Set "avatar_url" site.Params.avatar }}<!---->
-{{ else }}<!---->
-{{ $official_cdn := "https://www.gravatar.com/avatar/" }}<!---->
-{{ $cdn := (site.Params.gravatarCdn | default $official_cdn) }}<!---->
-{{ $md5 := (md5 site.Params.avatar) }}<!---->
-{{ $avatar_url := print $cdn $md5 "?s=160&d=identicon" }}<!---->
-{{ $.Scratch.Set "avatar_url" $avatar_url }}<!---->
-{{ end }}<!---->
-{{ end }}<!---->
-
-<html
-  class="not-ready lg:text-base"
-  style="--bg: {{ $bg_color }}"
-  lang="{{ or site.LanguageCode site.Language.Lang }}"
-  dir="{{ if site.Params.direction }}{{ site.Params.direction }}{{ else }}ltr{{ end }}"
->
+<head>
   {{ partial "head.html" . }}
-  <body class="text-black duration-200 ease-out dark:text-white">
-    {{ partial "header.html" . }}
+</head>
 
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
-    >
-      {{ block "main" . }}{{ end }}
-    </main>
+<body class="bg-linear-to-t from-sky-100 to-sky-600 relative">
+  <div>
+    <svg class="size-50 absolute top-1/16 left-1/16 fill-yellow-300" viewbox="0 0 100 50">
+      <circle cx="10" cy="10" r="10" />
+    </svg>
+  </div>
+  <div class="absolute top-1/4 left-0">
+    <!-- cloud -->
+    <svg class="cloud size-100 opacity-70 animate-[slide_60s_linear_infinite] text-blue-200" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 50" fill="currentColor">
+      <circle cx="30" cy="30" r="20" />
+      <circle cx="50" cy="30" r="25" />
+      <circle cx="70" cy="30" r="20" />
+      <circle cx="40" cy="20" r="15" />
+      <circle cx="60" cy="20" r="18" />
+    </svg>
+  </div>
+  <div>
+    <svg class="absolute bottom-0 w-full h-[12.5vh]">
+    <!-- grass -->
+    <rect width="100%" height="100%" class="fill-green-600" />
 
-    {{ partial "footer.html" . }}
-  </body>
+    <!-- tent -->
+    <polygon points="40,5 70,65 10,65" class="fill-black" />
+    <polygon points="40,30 55,65 25,65" class="fill-yellow-500" />
+
+    <!-- fire -->
+    <polygon points="90,65 100,85 80,85" class="fill-red-600" />
+
+    <!-- smoke -->
+    <circle cx="90" cy="75" r="5" class="fill-gray-400 animate-[rise_3s_linear_infinite]" style="animation-delay: 0s;" />
+    <circle cx="95" cy="70" r="6" class="fill-gray-400 animate-[rise_3s_linear_infinite]" style="animation-delay: 0.5s;" />
+    <circle cx="92" cy="65" r="7" class="fill-gray-400 animate-[rise_3s_linear_infinite]" style="animation-delay: 1s;" />
+</svg>
+  </div>
+  <div class="min-h-screen flex justify-center py-10 relative z-10">
+    <div class="bg-gray-100/50 p-6 rounded-lg shadow-lg w-full max-w-4xl relative">
+      <header>
+        {{ partial "header.html" . }}
+      </header>
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
+      <footer>
+        {{ partial "footer.html" . }}
+      </footer>
+    </div>
+  </div>
+</body>
+
 </html>

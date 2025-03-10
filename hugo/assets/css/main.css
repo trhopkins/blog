@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+@layer utilities {
+  @keyframes slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+  @keyframes rise {
+    0% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  @import "./base.css";
+}
+

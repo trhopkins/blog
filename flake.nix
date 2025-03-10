@@ -17,7 +17,6 @@
     {
       devShells.default = mkShell {
         buildInputs = [
-          terraform
           hugo
         ];
       };

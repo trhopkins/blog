@@ -1,0 +1,20 @@
+#single h1 {
+  @apply font-bold text-2xl text-gray-800 py-1;
+}
+
+#single h2 {
+  @apply font-bold text-xl text-gray-800 py-1;
+}
+
+#single h3 {
+  @apply font-bold text-gray-800 py-1;
+}
+
+#single ul {
+  @apply list-disc px-4;
+}
+
+#single ol {
+  @apply list-decimal px-4;
+}
+
