@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Camp Hopkins</title>
+    <link>https://example.org/tags/cloud/</link>
+    <description>Recent content in Cloud on Camp Hopkins</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 12 Mar 2025 12:00:00 -0500</lastBuildDate>
+    <atom:link href="https://example.org/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform site deployments to S3 and CloudFront</title>
+      <link>https://example.org/posts/2025-03-12-s3-tf-deployments/</link>
+      <pubDate>Wed, 12 Mar 2025 12:00:00 -0500</pubDate>
+      <guid>https://example.org/posts/2025-03-12-s3-tf-deployments/</guid>
+      <description>My current site deployment strategy.</description>
+    </item>
+  </channel>
+</rss>

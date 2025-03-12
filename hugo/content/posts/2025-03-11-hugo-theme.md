@@ -3,7 +3,7 @@ title: "My new Hugo theme"
 date: 2025-03-11T12:00:00-05:00
 draft: false
 summary: As a Hugo user, I want to write my own theme, so that I can learn how Hugo works.
-tags: [programming]
+tags: [programming, frontend]
 ---
 
 I've rewritten my Hugo theme using Tailwind and Go templates. The motivation

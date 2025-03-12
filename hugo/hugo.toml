@@ -1,6 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-US'
 title = 'Camp Hopkins'
+publishDir = '../dist'
 
 [[menus.main]]
 name = 'Home'

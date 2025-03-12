@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://camphopkins.com/</loc><lastmod>2025-01-27T12:00:00-05:00</lastmod></url><url><loc>https://camphopkins.com/posts/2025-01-27-platelet-tips/</loc><lastmod>2025-01-27T12:00:00-05:00</lastmod></url><url><loc>https://camphopkins.com/posts/</loc><lastmod>2025-01-27T12:00:00-05:00</lastmod></url><url><loc>https://camphopkins.com/posts/2024-11-24-hello-world/</loc><lastmod>2024-11-24T17:21:29-05:00</lastmod></url><url><loc>https://camphopkins.com/categories/</loc></url><url><loc>https://camphopkins.com/tags/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://example.org/</loc>
+    <lastmod>2025-03-12T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/</loc>
+    <lastmod>2025-03-12T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/frontend/</loc>
+    <lastmod>2025-03-11T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/2025-03-11-hugo-theme/</loc>
+    <lastmod>2025-03-11T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/programming/</loc>
+    <lastmod>2025-03-11T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/</loc>
+    <lastmod>2025-03-11T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/health/</loc>
+    <lastmod>2025-01-27T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/tags/life/</loc>
+    <lastmod>2025-01-27T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/posts/2025-01-27-platelet-tips/</loc>
+    <lastmod>2025-01-27T12:00:00-05:00</lastmod>
+  </url><url>
+    <loc>https://example.org/about/</loc>
+    <lastmod>2025-01-15T09:00:00-07:00</lastmod>
+  </url><url>
+    <loc>https://example.org/categories/</loc>
+  </url>
+</urlset>

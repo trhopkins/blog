@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Camp Hopkins</title>
-    <link>https://example.org/posts/</link>
-    <description>Recent content in Posts on Camp Hopkins</description>
+    <title>Frontend on Camp Hopkins</title>
+    <link>https://example.org/tags/frontend/</link>
+    <description>Recent content in Frontend on Camp Hopkins</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 11 Mar 2025 12:00:00 -0500</lastBuildDate>
-    <atom:link href="https://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My new Hugo theme</title>
       <link>https://example.org/posts/2025-03-11-hugo-theme/</link>
       <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
       <guid>https://example.org/posts/2025-03-11-hugo-theme/</guid>
       <description>As a Hugo user, I want to write my own theme, so that I can learn how Hugo works.</description>
-    </item>
-    <item>
-      <title>Platelet Donation Tips</title>
-      <link>https://example.org/posts/2025-01-27-platelet-tips/</link>
-      <pubDate>Mon, 27 Jan 2025 12:00:00 -0500</pubDate>
-      <guid>https://example.org/posts/2025-01-27-platelet-tips/</guid>
-      <description>What do you bring to a platelet donation appointment? What happens there? Read on to find out.</description>
     </item>
   </channel>
 </rss>

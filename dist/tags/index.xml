@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Camp Hopkins</title><link>https://camphopkins.com/tags/</link><description>Recent content in Tags on Camp Hopkins</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://camphopkins.com/tags/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Camp Hopkins</title>
+    <link>https://example.org/tags/</link>
+    <description>Recent content in Tags on Camp Hopkins</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 11 Mar 2025 12:00:00 -0500</lastBuildDate>
+    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Frontend</title>
+      <link>https://example.org/tags/frontend/</link>
+      <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
+      <guid>https://example.org/tags/frontend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://example.org/tags/programming/</link>
+      <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
+      <guid>https://example.org/tags/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Health</title>
+      <link>https://example.org/tags/health/</link>
+      <pubDate>Mon, 27 Jan 2025 12:00:00 -0500</pubDate>
+      <guid>https://example.org/tags/health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Life</title>
+      <link>https://example.org/tags/life/</link>
+      <pubDate>Mon, 27 Jan 2025 12:00:00 -0500</pubDate>
+      <guid>https://example.org/tags/life/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
