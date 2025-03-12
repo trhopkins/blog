@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://example.org/</loc>
     <lastmod>2025-03-11T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2025-03-11-hugo-theme/</loc>
+    <loc>https://example.org/posts/2025-03-11-hugo-theme/</loc>
     <lastmod>2025-03-11T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://example.org/posts/</loc>
     <lastmod>2025-03-11T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/programming/</loc>
+    <loc>https://example.org/tags/programming/</loc>
     <lastmod>2025-03-11T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://example.org/tags/</loc>
     <lastmod>2025-03-11T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/health/</loc>
+    <loc>https://example.org/tags/health/</loc>
     <lastmod>2025-01-27T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/life/</loc>
+    <loc>https://example.org/tags/life/</loc>
     <lastmod>2025-01-27T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/2025-01-27-platelet-tips/</loc>
+    <loc>https://example.org/posts/2025-01-27-platelet-tips/</loc>
     <lastmod>2025-01-27T12:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://example.org/about/</loc>
     <lastmod>2025-01-15T09:00:00-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://example.org/categories/</loc>
   </url>
 </urlset>

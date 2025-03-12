@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Camp Hopkins</title>
-    <link>http://localhost:1313/</link>
+    <link>https://example.org/</link>
     <description>Recent content on Camp Hopkins</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 11 Mar 2025 12:00:00 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My new Hugo theme</title>
-      <link>http://localhost:1313/posts/2025-03-11-hugo-theme/</link>
+      <link>https://example.org/posts/2025-03-11-hugo-theme/</link>
       <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
-      <guid>http://localhost:1313/posts/2025-03-11-hugo-theme/</guid>
+      <guid>https://example.org/posts/2025-03-11-hugo-theme/</guid>
       <description>As a Hugo user, I want to write my own theme, so that I can learn how Hugo works.</description>
     </item>
     <item>
       <title>Platelet Donation Tips</title>
-      <link>http://localhost:1313/posts/2025-01-27-platelet-tips/</link>
+      <link>https://example.org/posts/2025-01-27-platelet-tips/</link>
       <pubDate>Mon, 27 Jan 2025 12:00:00 -0500</pubDate>
-      <guid>http://localhost:1313/posts/2025-01-27-platelet-tips/</guid>
+      <guid>https://example.org/posts/2025-01-27-platelet-tips/</guid>
       <description>What do you bring to a platelet donation appointment? What happens there? Read on to find out.</description>
     </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://example.org/about/</link>
       <pubDate>Wed, 15 Jan 2025 09:00:00 -0700</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>https://example.org/about/</guid>
       <description>&lt;p&gt;My name is Travis Reid Hopkins. You can call me Reid (he/him)!&lt;/p&gt;&#xA;&lt;p&gt;I graduated from Central Connecticut State University in 2023 and have been&#xA;working in the industry as a DevOps engineer since. I&amp;rsquo;m interested in gimmicky&#xA;computer science tricks, system administration, and cybersecurity. In my free&#xA;time I also play Bridge.&lt;/p&gt;</description>
     </item>
   </channel>
