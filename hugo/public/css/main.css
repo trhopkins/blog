@@ -1244,9 +1244,6 @@
   .bg-gray-200 {
     background-color: var(--color-gray-200);
   }
-  .bg-gray-400 {
-    background-color: var(--color-gray-400);
-  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -2203,16 +2200,6 @@
   .dark\:text-white {
     @media (prefers-color-scheme: dark) {
       color: var(--color-white);
-    }
-  }
-  .\[\&_svg\]\:m-auto {
-    & svg {
-      margin: auto;
-    }
-  }
-  .\[\&_svg\]\:block {
-    & svg {
-      display: block;
     }
   }
 }
