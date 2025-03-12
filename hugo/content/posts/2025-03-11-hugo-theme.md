@@ -6,11 +6,20 @@ summary: As a Hugo user, I want to write my own theme, so that I can learn how H
 tags: [programming]
 ---
 
-I've rewritten my Hugo theme using Tailwind and Go templates. The motivation came partly from seeing other personalized sites with custom theming, and partly from wanting to get a better handle on frontend development in general. I have a lot of ideas in my head about developing fullstack applications, but they rarerly come to fruition due to the sea of papercuts associated with JavaScript, CSS, and managing dynamic state in the browser. This re-theming was fun because it was 
+I've rewritten my Hugo theme using Tailwind and Go templates. The motivation
+came partly from seeing other personalized sites with custom theming, and
+partly from wanting to get a better handle on frontend development in general.
+I have a lot of ideas in my head about developing fullstack applications, but
+they rarerly come to fruition due to the sea of papercuts associated with
+vanilla JavaScript, CSS, and managing dynamic state in the browser. This
+re-theming was fun because I allowed myself to deploy something incrementally
+rather than attempting to perfect every aspect of the "product". It's my
+website, I'll do what I like with it!
 
 # General Structure
 
-A basic Hugo theme generated with `hugo new theme <NAME> [OPTIONS]` is layed out with this structure:
+A basic Hugo theme generated with `hugo new theme <NAME> [OPTIONS]` is layed
+out with this structure:
 
 ```txt
 .
@@ -29,10 +38,11 @@ A basic Hugo theme generated with `hugo new theme <NAME> [OPTIONS]` is layed out
 └── theme.toml
 ```
 
-For simplicity, I imported the contents of my theme directly into my site.
-There are some redundant files in here, but I chose to focus on the layouts and
-assets directories since they contain almost everything I needed to style the
-site. The `hugo.toml` file also needed some tweaks, but more on that later.
+For simplicity, I imported the contents of my theme directly into my existing
+site. There are some redundant files in here, but I chose to focus on the
+layouts and assets directories since they contain almost everything I needed to
+style the site. The `hugo.toml` file also needed some tweaks, but more on that
+later.
 
 ## Defaults and Partials
 
@@ -63,17 +73,43 @@ layouts/
 │   └── single.html
 └── partials
     ├── footer.html
-    ├── head
-    │   ├── css.html
-    │   └── js.html
     ├── head.html
     ├── header.html
     └── menu.html
 ```
 
-Note the "css.html" and "js.html" partials which are loaded in the head of the page. I left these untouched.
+Note the default head.html loads a "css.html" and "js.html" partial at the
+start of the page content. I chose to keep my styling in `assets/css/` and
+remove all Javascript.
 
 ### SVG assets
 
-### TODO
+All the assets on the page are SVGs, with the exception of my profile picture
+in the top right. I had fun creating these by hand, though I had to keep the
+drawing to a simple subset of what SVG is capable of rendering and animating.
+The animations are stored in assets/css/main.css, separate from the "base"
+styling for normal pages. Tailwind is sadly lacking in animations, but I found
+that refering to my custom cloud and smoke keyframe animations with
+`animate-[slide_60s_linear_infinite]` was a tidy trick to get around this.
+
+# Tailwind
+
+The second reason for rebuilding Camp Hopkins was to get more familiar with
+Tailwind. I find that a styling system that forces you to build from the ground
+up rather than pasting in pre-built components allowed me to understand what
+was going on much better. My personal theme going into this project was to put
+something online without overthinking it, and I can see how the many methods of
+organizing CSS can get overwhelming. Slapping a handful of utility classes on a
+single "component" partial allowed me to get something working quickly and
+focus on cleaning it up later, without a mess of naming conventions and
+organizational hierarchy getting in the way.
+
+The only pure CSS I had to write was the SVG animation keyframes, and even that
+had a handy trick available in Tailwind. I was able to shove Tailwind classes
+into my CSS classes via the `@apply` directive, which worked surprisingly well.
+This may require revisiting in the future if I ever need to define my own
+utility classes and decide to overhaul the admittedly basic post styling. Maybe
+if I start adding more dynamic partial templates I can clean this up.
+
+Bam it's done! An entire post written in two hours! Ship it!
 
