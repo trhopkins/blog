@@ -1,8 +1,9 @@
 ---
 title: Banff
 date: 2025-05-19T12:00:00-07:00
-draft: true
---
+summary: Banff trip day one.
+draft: false
+---
 
 # Banff Canadian National Park Travel Log: Day One
 
@@ -23,14 +24,19 @@ I was able to get some CAD$ nearby and buy a Banff pin for my collection before
 we grabbed lunch and some maps and leaving the shopping center. We visited
 [Lake Louise](https://www.banfflakelouise.com/), [Lake
 Minnewanka](https://www.banfflakelouise.com/experiences/lake-minnewanka), and
-an assortment of reservoirs and streams connecting them all. I am glad I
-recently upgraded my phone for a nicer camera! On our way home we stopped at
-Safeway for groceries, saw some [Columbian Ground
+an assortment of reservoirs and streams connecting them all.
+
+![asdf](spray-lakes.webp)
+
+I am glad I recently upgraded my phone for a nicer camera! On our way home we
+stopped at Safeway for groceries, saw some [Columbian Ground
 Squirrels](https://a100.gov.bc.ca/pub/eswp/speciesSummary.do;jsessionid=5c15a18850e8401fad69cde673c2d6b281906a0fcbb55e733db0c689ccfd49ee.e3uMah8KbhmLe3aOchqKaNuOci1ynknvrkLOlQzNp65In0?id=17397)
 (we first mistook them for prarie dogs or marmots) and landed an actual parking
 spot in the basement of our hotel's parking. Certainly an upgrade over our 2am
 corner spot the night we arrived. I exercised on the eliptical for an hour
 before dinner while some rowdy men played pool in the room beside me.
+
+![Mount Inglismaldie](lake-minnewanka-mount-inglismaldie.webp)
 
 My sister was able to get [Twilight](https://www.imdb.com/title/tt1099212/) on
 our TV with US Netflix thanks to my laptop's VPN. Our friend had never seen it,

@@ -1,8 +1,9 @@
 ---
 title: Banff
 date: 2025-05-20T12:00:00-07:00
+summary: Banff trip day two.
 draft: true
---
+---
 
 # Banff Canadian National Park Travel Log: Day Two
 
