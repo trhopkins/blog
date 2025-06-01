@@ -2,7 +2,7 @@
 title: Banff
 date: 2025-05-20T12:00:00-07:00
 summary: Banff trip day two.
-draft: true
+draft: false
 ---
 
 # Banff Canadian National Park Travel Log: Day Two
@@ -25,6 +25,8 @@ off the upper falls and expose the variety of mosses and lichens as we passed.
 At 1.5km (~0.9mi) we rounded the last falls our path turned to mud and rock,
 with brush reaching into the trail.
 
+![Johnston Canyon Resort sign](johnston-canyon-resort-sign.webp)
+
 We listened carefully, but could only spot one solitary songbird perched high
 on a grandfather [Lodgepole
 Pine](https://treecanada.ca/resources/canadas-arboreal-emblems/lodgepole-pine/)
@@ -36,12 +38,16 @@ then descended to the Alpine basins about 2km (~1.3mi) into the trail, at an
 elevation of 1750m (~1mi). The trail turned into a multitude of streams, downed
 trees, permafrost, and mud tracked with hoof and paw prints.
 
+![Johnston Canyon proper](johnston-canyon.webp)
+
 The [Ink Pots](https://theresearchedtraveler.com/ink-pots-hike-banff/) at the
 end of our 5.7km (~3.5mi) hike were staggeringly beautiful. Seeing the origin
 of the cold springs burbling up through the fine clay of many colors was
 breathtaking. The water was totally pristine, filtered underground at 4 degrees
 Celsius (~39 degrees Fahrenheit). We ate sandwiches on a bench, bundled up to
 protect against the cold and winds.
+
+![Ink Pots](ink-pots.webp)
 
 The hike back down was much quicker, partially because I wasn't compelled to
 snap photos between the increasing waves of tourists. Our shins were all tired

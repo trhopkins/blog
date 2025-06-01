@@ -2,31 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Camp Hopkins</title>
-    <link>https://example.org/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Camp Hopkins</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 19 May 2025 12:00:00 -0700</lastBuildDate>
-    <atom:link href="https://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 May 2025 12:00:00 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Banff</title>
-      <link>https://example.org/posts/2025-05-19-banff-day-one/</link>
+      <link>http://localhost:1313/posts/2025-05-24-banff-day-six/</link>
+      <pubDate>Sat, 24 May 2025 12:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-24-banff-day-six/</guid>
+      <description>Banff trip day six.</description>
+    </item>
+    <item>
+      <title>Banff</title>
+      <link>http://localhost:1313/posts/2025-05-23-banff-day-five/</link>
+      <pubDate>Fri, 23 May 2025 12:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-23-banff-day-five/</guid>
+      <description>Banff trip day five.</description>
+    </item>
+    <item>
+      <title>Banff</title>
+      <link>http://localhost:1313/posts/2025-05-22-banff-day-four/</link>
+      <pubDate>Thu, 22 May 2025 12:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-22-banff-day-four/</guid>
+      <description>Banff trip day four.</description>
+    </item>
+    <item>
+      <title>Banff</title>
+      <link>http://localhost:1313/posts/2025-05-21-banff-day-three/</link>
+      <pubDate>Wed, 21 May 2025 12:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-21-banff-day-three/</guid>
+      <description>Banff trip day three.</description>
+    </item>
+    <item>
+      <title>Banff</title>
+      <link>http://localhost:1313/posts/2025-05-20-banff-day-two/</link>
+      <pubDate>Tue, 20 May 2025 12:00:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-20-banff-day-two/</guid>
+      <description>Banff trip day two.</description>
+    </item>
+    <item>
+      <title>Banff</title>
+      <link>http://localhost:1313/posts/2025-05-19-banff-day-one/</link>
       <pubDate>Mon, 19 May 2025 12:00:00 -0700</pubDate>
-      <guid>https://example.org/posts/2025-05-19-banff-day-one/</guid>
+      <guid>http://localhost:1313/posts/2025-05-19-banff-day-one/</guid>
       <description>Banff trip day one.</description>
     </item>
     <item>
+      <title>Terraform site deployments to S3 and CloudFront</title>
+      <link>http://localhost:1313/posts/2025-03-12-s3-tf-deployments/</link>
+      <pubDate>Wed, 12 Mar 2025 12:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/posts/2025-03-12-s3-tf-deployments/</guid>
+      <description>My current site deployment strategy.</description>
+    </item>
+    <item>
       <title>My new Hugo theme</title>
-      <link>https://example.org/posts/2025-03-11-hugo-theme/</link>
+      <link>http://localhost:1313/posts/2025-03-11-hugo-theme/</link>
       <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
-      <guid>https://example.org/posts/2025-03-11-hugo-theme/</guid>
+      <guid>http://localhost:1313/posts/2025-03-11-hugo-theme/</guid>
       <description>As a Hugo user, I want to write my own theme, so that I can learn how Hugo works.</description>
     </item>
     <item>
       <title>Platelet Donation Tips</title>
-      <link>https://example.org/posts/2025-01-27-platelet-tips/</link>
+      <link>http://localhost:1313/posts/2025-01-27-platelet-tips/</link>
       <pubDate>Mon, 27 Jan 2025 12:00:00 -0500</pubDate>
-      <guid>https://example.org/posts/2025-01-27-platelet-tips/</guid>
+      <guid>http://localhost:1313/posts/2025-01-27-platelet-tips/</guid>
       <description>What do you bring to a platelet donation appointment? What happens there? Read on to find out.</description>
     </item>
   </channel>

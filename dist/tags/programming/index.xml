@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Camp Hopkins</title>
-    <link>https://example.org/tags/programming/</link>
+    <link>http://localhost:1313/tags/programming/</link>
     <description>Recent content in Programming on Camp Hopkins</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 11 Mar 2025 12:00:00 -0500</lastBuildDate>
-    <atom:link href="https://example.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Mar 2025 12:00:00 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform site deployments to S3 and CloudFront</title>
+      <link>http://localhost:1313/posts/2025-03-12-s3-tf-deployments/</link>
+      <pubDate>Wed, 12 Mar 2025 12:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/posts/2025-03-12-s3-tf-deployments/</guid>
+      <description>My current site deployment strategy.</description>
+    </item>
     <item>
       <title>My new Hugo theme</title>
-      <link>https://example.org/posts/2025-03-11-hugo-theme/</link>
+      <link>http://localhost:1313/posts/2025-03-11-hugo-theme/</link>
       <pubDate>Tue, 11 Mar 2025 12:00:00 -0500</pubDate>
-      <guid>https://example.org/posts/2025-03-11-hugo-theme/</guid>
+      <guid>http://localhost:1313/posts/2025-03-11-hugo-theme/</guid>
       <description>As a Hugo user, I want to write my own theme, so that I can learn how Hugo works.</description>
     </item>
   </channel>
