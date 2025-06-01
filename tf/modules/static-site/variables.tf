@@ -83,6 +83,7 @@ variable "mime_types" {
     png  = "image/png"
     svg  = "image/svg"
     svg  = "image/svg+xml"
+    webp = "image/webp"
     ttf  = "font/ttf"
     js   = "application/javascript"
     json = "application/json"
