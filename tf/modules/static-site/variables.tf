@@ -59,14 +59,15 @@ variable "root_domain_name" {
 variable "content_types" {
   type = map(string)
   default = {
-    ".html" = "text/html",
     ".css"  = "text/css",
-    ".js"   = "application/javascript",
-    ".jpg"  = "image/jpeg",
-    ".png"  = "image/png",
     ".gif"  = "image/gif",
-    ".svg"  = "image/svg+xml",
+    ".html" = "text/html",
+    ".jpg"  = "image/jpeg",
+    ".js"   = "application/javascript",
     ".pdf"  = "application/pdf",
+    ".png"  = "image/png",
+    ".svg"  = "image/svg+xml",
+    ".webp"  = "image/webp",
   }
 }
 
