@@ -1,11 +1,10 @@
 ---
-title: Banff
+title: Banff Day Trip Day One
 date: 2025-05-19T12:00:00-07:00
-summary: Banff trip day one.
+summary: Visiting Banff's beautiful alpine lakes.
 draft: false
+tags: [life, travel]
 ---
-
-# Banff Canadian National Park Travel Log: Day One
 
 This blog post series is a direct transcript of the notes I took while visiting
 Banff National Park in Alberta, Canada. I left with my sister and a friend of
@@ -26,7 +25,7 @@ we grabbed lunch and some maps and leaving the shopping center. We visited
 Minnewanka](https://www.banfflakelouise.com/experiences/lake-minnewanka), and
 an assortment of reservoirs and streams connecting them all.
 
-![asdf](spray-lakes.webp)
+![Spray Lakes](spray-lakes.webp)
 
 I am glad I recently upgraded my phone for a nicer camera! On our way home we
 stopped at Safeway for groceries, saw some [Columbian Ground

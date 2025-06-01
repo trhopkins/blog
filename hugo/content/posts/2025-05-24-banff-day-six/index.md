@@ -3,6 +3,7 @@ title: Banff
 date: 2025-05-24T12:00:00-07:00
 summary: Banff trip day six.
 draft: true
+tags: [life, travel]
 ---
 
 # Banff Canadian National Park Travel Log: Day Six
@@ -15,14 +16,14 @@ certainly be returning.
 
 ## Saturday, May 24th
 
-Today we left at 10:30am MDT after a lovely egg sandwich breakfast by my sister (I
-love you NAME REDACTED!). We [toured the Moore and Whyte family display
+Today we left at 10:30am MDT after a lovely egg sandwich breakfast by my sister
+(I love you NAME REDACTED!). We [toured the Moore and Whyte family display
 homes](https://www.whyte.org/tours) at 11am. We learned that their
 philantrhopic relationship with the Banff in the early twentieth century was
 foundational to the park's identity today. I was surprised to learn that Pearl
 Moore was a beading competition judge, and had many pieces of art and [beadwork
-gifted to her estate by Native
-Americans](https://www.indigenousarchives.whyte.org/beaded-vest). Our
+gifted to her estate by
+indigenous](https://www.indigenousarchives.whyte.org/beaded-vest). Our
 Australian tour guide, Peter, was quick to point out the irony of our tour
 group consisting entirely of Americans and Brits, with no Canadians or
 indigenous people whatsoever. The tour ended with a story about [Bill

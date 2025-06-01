@@ -1,11 +1,10 @@
 ---
-title: Banff
+title: Banff Day Trip Day Two
 date: 2025-05-20T12:00:00-07:00
-summary: Banff trip day two.
+summary: Hiking Johnston Canyon and visiting Sulfur Springs Resort.
 draft: false
+tags: [life, travel]
 ---
-
-# Banff Canadian National Park Travel Log: Day Two
 
 This blog post series is a direct transcript of the notes I took while visiting
 Banff National Park in Alberta, Canada. I left with my sister and a friend of

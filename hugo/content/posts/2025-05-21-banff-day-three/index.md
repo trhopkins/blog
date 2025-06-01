@@ -1,11 +1,10 @@
 ---
-title: Banff
+title: Banff Day Trip Day Three
 date: 2025-05-21T12:00:00-07:00
-summary: Banff trip day three.
-draft: true
+summary: Visiting the Cave and Basin National History Site and biking Banff.
+draft: false
+tags: [life, travel]
 ---
-
-# Banff Canadian National Park Travel Log: Day Three
 
 This blog post series is a direct transcript of the notes I took while visiting
 Banff National Park in Alberta, Canada. I left with my sister and a friend of
@@ -28,16 +27,20 @@ McCabe) had destroyed much of the original rock deposits around the caves to
 build a ["hotel"](https://parks.canada.ca/lhn-nhs/ab/caveandbasin/culture) in
 1883.
 
+![Sulfur Mountain Hotel](sulfur-mountain-hotel.webp)
+
 The [Banff Springs
 Snails](https://bowvalleynaturalists.org/natural-history/snails/) and
 surrounding marshlands, with their [yellow throated
 warblers](https://www.audubon.org/field-guide/bird/yellow-throated-warbler),
-garter snakes, and red-winged blackbirds were a treat to behold. The Native
-American art depicting elk hunts and healing springs were also fascinating.
-Navigating the tunnel to their [sacred
+garter snakes, and red-winged blackbirds were a treat to behold. The indigenous
+art depicting elk hunts and healing springs were also fascinating. Navigating
+the tunnel to their [sacred
 cave](https://parks.canada.ca/lhn-nhs/ab/caveandbasin/activ/activites-activities)
 felt a bit like trespassing, but we were glad to experience it firsthand amidst
 the crowd of preschoolers craning their necks at the place.
+
+![Sulfur Cavern](sulfur-cavern.webp)
 
 At 4pm my sister and I left for Banff to rent mountain bikes at [Banff Adventures
 Co.](https://www.banffadventures.com/rentals/bikes/) and went on a proper
@@ -57,6 +60,8 @@ River Falls](https://banff.ca/654/Bow-Falls-Trail) around 6:50pm. We got a
 good view of the full Upper Springs resort which we had visited the evening
 before. We zipped through town and returned the bikes at 7:10pm, with 20
 minutes to spare before the rental place closed. Phew!
+
+![Tired](tired.webp)
 
 Side note, we would later learn [Tunnel Mountain was once called Sacred Buffalo
 Guardian

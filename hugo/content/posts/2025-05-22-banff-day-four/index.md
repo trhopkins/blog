@@ -1,11 +1,10 @@
 ---
-title: Banff
+title: Banff Day Trip Day Four
 date: 2025-05-22T12:00:00-07:00
-summary: Banff trip day four.
+summary: Yamnuska Wolfdog Sanctuary and shopping.
 draft: true
+tags: [life, travel]
 ---
-
-# Banff Canadian National Park Travel Log: Day Four
 
 This blog post is a direct transcript of the notes I took while visiting Banff
 National Park in Alberta, Canada. I left with my sister and a friend of ours on

@@ -3,6 +3,7 @@ title: Banff
 date: 2025-05-23T12:00:00-07:00
 summary: Banff trip day five.
 draft: true
+tags: [life, travel]
 ---
 
 # Banff Canadian National Park Travel Log
