@@ -2,7 +2,7 @@
 title: Banff
 date: 2025-05-23T12:00:00-07:00
 summary: Banff trip day five.
-draft: true
+draft: false
 tags: [life, travel]
 ---
 
@@ -40,6 +40,8 @@ the first time! We didn't stop to canoe, but my sister and I did snag a beautifu
 Emerald Lake blanket that closely resembled our father's fishing lure quilt
 that we used as blanket fort material as children.
 
+![Emerald Lake](emerald-lake.webp)
+
 After lunch, we stopped at the ["Natural Bridge" over Kicking Horse
 River](https://waterfallrecord.com/2022/05/25/natural-bridge-falls-british-columbia/),
 which strongly reminded me of [Pollards
@@ -50,6 +52,8 @@ car equivalent of a fly trap... We had no trouble distinguishing the median and
 shoulder on our way however. If we had lane assist enabled on our rental car we
 could have snoozed all the way without trouble.
 
+![Natural Bridge](natural-bridge.webp)
+
 The side road to Wapta Falls seemed to immitate the surface of a golf ball. The
 trail itself started out muddy, then fell away to switchbacks after 2km
 (~1.2mi) or so. This gave us several neat vantage points to view Wapta Falls'
@@ -58,13 +62,15 @@ reflect off the clay mound ahead where, thousands of years ago, the river once
 fell. We left the downstream riverbed soaked with pristine droplets, after
 skipping stones and taking photos of the double-rainbows beneath the spray.
 
+![Wapta Falls](wapta-falls.webp)
+
 The new AirBnB we checked into was an 'in-law suite' in a neighborhood close to
 Banff. We had to get creative with the smart TV to watch [Twilight: Breaking
 Dawn, Part Two](https://www.imdb.com/title/tt1673434/). The movie was honestly
 a boring letdown, especially compared to the first three movies. The twist at
 the end came across like a slap in the face to a new Twilight fan like myself
 (Go [Team
-Jacob](https://www.quora.com/Are-you-team-Edward-or-team-Jacob-Twilight-and-why)!!).
+Bella](https://www.quora.com/Are-you-team-Edward-or-team-Jacob-Twilight-and-why)!!).
 It is 1:00am MDT at the time of this writing. Let's see how this pull-out couch
 fares!
 

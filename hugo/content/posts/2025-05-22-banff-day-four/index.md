@@ -2,7 +2,7 @@
 title: Banff Day Trip Day Four
 date: 2025-05-22T12:00:00-07:00
 summary: Yamnuska Wolfdog Sanctuary and shopping.
-draft: true
+draft: false
 tags: [life, travel]
 ---
 
@@ -27,11 +27,15 @@ or begged for belly rubs when their handlers entered. The ["high wolf
 content"](https://www.wolfdogawareness.com/) dogs seemed hesitant to approach
 the handlers, but were intent to watch us from afar.
 
+![Naqqui](naqqui.webp)
+
 I forgot to mention: on the way down we stopped for what appeared to be a small
 pack of dogs in a field. On further binocular-assisted inspection they were
 revealed to be statues or stuffed puppets in life scale. We could not find them
 on the way home. Were they moved, or did we miss them? I think I saw a Twilight
 Zone episode like this once... No photos to accompany this story, sorry.
+
+![Mist and Meeka](mist-and-meeka.webp)
 
 After making some delicious, lean-beef burgers, 2 cups of instant rice for my
 classic (read: repetitive) meal prep of rice, corn, and beans, and another

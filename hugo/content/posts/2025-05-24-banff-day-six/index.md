@@ -2,7 +2,7 @@
 title: Banff
 date: 2025-05-24T12:00:00-07:00
 summary: Banff trip day six.
-draft: true
+draft: false
 tags: [life, travel]
 ---
 
@@ -19,7 +19,7 @@ certainly be returning.
 Today we left at 10:30am MDT after a lovely egg sandwich breakfast by my sister
 (I love you NAME REDACTED!). We [toured the Moore and Whyte family display
 homes](https://www.whyte.org/tours) at 11am. We learned that their
-philantrhopic relationship with the Banff in the early twentieth century was
+philanthropic relationship with the Banff in the early twentieth century was
 foundational to the park's identity today. I was surprised to learn that Pearl
 Moore was a beading competition judge, and had many pieces of art and [beadwork
 gifted to her estate by
@@ -30,6 +30,8 @@ indigenous people whatsoever. The tour ended with a story about [Bill
 Peyto](https://www.peyto.com/wildbill.aspx), a famous woodsman and mountain
 guide, allegedly releasing a snared lynx into a hotel bar to clear out other
 customers so he could have a drink in silence.
+
+![Whyte House](whyte-house.webp)
 
 We then proceeded into the Whyte museum proper, to view the widely-advertised
 [Indigenous Seven art exhibit](https://www.whyte.org/exhibitions), which had
@@ -42,6 +44,8 @@ Americans, [cosigned by the
 UN](https://www.justice.gc.ca/eng/declaration/about-apropos.html), formally
 requesting permission from the Canadian Government to travel between the
 segregated reservations to hunt and worship on their own terms.
+
+![Natural History Museum](museum.webp)
 
 At 3:00pm MDT we rented bikes from [Banff
 Adventures](https://www.banffadventures.com/rentals/bikes/) once again and
