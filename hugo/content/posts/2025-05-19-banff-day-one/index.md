@@ -1,5 +1,5 @@
 ---
-title: Banff Day Trip Day One
+title: Banff Trip Day One
 date: 2025-05-19T12:00:00-07:00
 summary: Visiting Banff's beautiful alpine lakes.
 draft: false

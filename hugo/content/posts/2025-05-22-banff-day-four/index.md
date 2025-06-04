@@ -1,5 +1,5 @@
 ---
-title: Banff Day Trip Day Four
+title: Banff Trip Day Four
 date: 2025-05-22T12:00:00-07:00
 summary: Yamnuska Wolfdog Sanctuary and shopping.
 draft: false

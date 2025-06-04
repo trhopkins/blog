@@ -1,7 +1,7 @@
 ---
-title: Banff
+title: Banff Trip Day Five
 date: 2025-05-23T12:00:00-07:00
-summary: Banff trip day five.
+summary: Visiting Yoho National Park in Canada.
 draft: false
 tags: [life, travel]
 ---

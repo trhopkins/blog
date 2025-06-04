@@ -1,5 +1,5 @@
 ---
-title: Banff Day Trip Day Three
+title: Banff Trip Day Three
 date: 2025-05-21T12:00:00-07:00
 summary: Visiting the Cave and Basin National History Site and biking Banff.
 draft: false

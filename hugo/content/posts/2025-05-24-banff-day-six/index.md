@@ -1,12 +1,10 @@
 ---
-title: Banff
+title: Banff Trip Day Six
 date: 2025-05-24T12:00:00-07:00
-summary: Banff trip day six.
+summary: Museums and biking around Banff.
 draft: false
 tags: [life, travel]
 ---
-
-# Banff Canadian National Park Travel Log: Day Six
 
 This blog post series is a direct transcript of the notes I took while visiting
 Banff National Park in Alberta, Canada. I left with my sister and a friend of

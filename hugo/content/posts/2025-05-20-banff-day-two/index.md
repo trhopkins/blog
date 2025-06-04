@@ -1,5 +1,5 @@
 ---
-title: Banff Day Trip Day Two
+title: Banff Trip Day Two
 date: 2025-05-20T12:00:00-07:00
 summary: Hiking Johnston Canyon and visiting Sulfur Springs Resort.
 draft: false
